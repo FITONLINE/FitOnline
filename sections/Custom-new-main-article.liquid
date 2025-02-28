@@ -212,9 +212,7 @@
           {{ block.shopify_attributes }}
         >
           {% liquid
-            if article.metafields.custom.rendering != blank
             article.content
-            endif
           %}
         </div>
 
