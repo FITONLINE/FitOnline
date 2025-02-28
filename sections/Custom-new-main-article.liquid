@@ -211,9 +211,7 @@
           itemprop="articleBody"
           {{ block.shopify_attributes }}
         >
-          {% liquid
-            article.content
-          %}
+            {{ article.content }}
         </div>
 
       {%- when 'share' -%}
