@@ -213,8 +213,6 @@
         >
           {% liquid
             if article.metafields.custom.rendering != blank
-            render "article.metafields.custom.rendering"
-            else
             article.content
             endif
           %}
