@@ -211,7 +211,16 @@
           itemprop="articleBody"
           {{ block.shopify_attributes }}
         >
-          {{ article.content }}
+          {% case article.handle %}
+            {% when 'all/cheaper-personalgym' %}
+              {% render "A-cheaper-personalgym" %}
+            {% when 'example-handle-2' %}
+              <p>Content for example handle 2</p>
+            {% when 'example-handle-3' %}
+              <p>Content for example handle 3</p>
+            {% else %}
+              <p>Default content for other handles</p>
+          {% endcase %}
         </div>
 
       {%- when 'share' -%}
