@@ -1,0 +1,443 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  
+  .Custom-contact2 .contact__button .button {
+    background-color: rgba(var(--color-button),  0.7);
+  }
+  .Custom-contact2 .contact__button {
+    margin: 2rem 0;
+  }
+  .Custom-contact2 {
+    margin: 0 auto;
+    max-width: 100rem;
+  }
+  .Custom-contact-container {
+    border: 5px solid rgba(var(--color-foreground), 0.04);
+  }
+  .Custom-contact-title-container {
+    background-color: rgba(var(--color-foreground), 0.04);
+    padding: 2rem 2rem 6rem;
+  }
+  .Custom-contact2 .title {
+    margin: 0;
+  }
+  .Custom-contact-title-container title-en {
+    margin: 0;
+  }
+  .Custom-contact2 form,
+  .Custom-contact-description {
+    padding: 0 3rem;
+  }
+  .field-gender {
+    align-items: center;
+    justify-content: center;
+  }
+  .ContactForm-subject {
+    flex-direction: column;
+  }
+  .ContactForm-subject-options {
+    padding: 3.5rem 1.5rem 1rem 2rem;
+  }
+  .gender__field__input_man_woman {
+    display: flex;
+    justify-content: center;
+    column-gap: 4rem;
+  }
+  .subject__field__input {
+    display: flex;
+    column-gap: 2rem;
+  }
+  @media screen and (max-width: 749px) {
+    .gender__field__input__container {
+      padding: 0.8rem;
+      margin: var(--inputs-border-width);
+      transition: box-shadow var(--duration-short) ease;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .subject__field__input {
+      flex-direction: column;
+    }
+    .subject__field__input__container {
+      padding: 0.8rem 0 0 0;
+    }
+    .gender__field__input_man_woman {
+      margin-left: 3.5rem;
+    }
+  }
+  .Custom-contact2 .text-area {
+    min-height: 20rem;
+  }
+  .Custom-contact2 input[type="radio" i] {
+    margin: 0;
+  }
+{%- endstyle -%}
+
+<div id="{{ section.settings.section-id }}" class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="Custom-contact2 contact page-width section-{{ section.id }}-padding">
+    <div class="Custom-contact-container">
+      <div class="Custom-contact-title-container">
+    {%- if section.settings.heading != blank -%}
+      {% if section.settings.title-en != blank %}
+        <p class="title-en">{{ section.settings.title-en }}</p>
+        {% endif %}
+        <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} {% if section.settings.title-center != false %}title-center{% endif %}">
+        {{ section.settings.heading }}
+      </h2>
+    {%- else -%}
+      <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
+    {%- endif -%}
+      </div>
+    {%- liquid
+      assign contact_form_class = 'isolate'
+      if settings.animations_reveal_on_scroll
+        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
+      endif
+    -%}
+    <div class="Custom-contact-description">
+      {{ section.settings.contact-description }}
+    </div>
+    
+    {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+      <div class="field ContactForm-subject">
+      <label class="field__label" for="ContactForm-subject">お問い合わせ内容
+      <span aria-hidden="true">*</span>
+      </label>
+      <div class="ContactForm-subject-options">
+        <div class="subject__field__input">
+          <div class="subject__field__input__container">
+            <input
+              type="radio"
+              value="カウンセリング"
+              name="contact[お問い合わせ内容]"
+              id="ContactForm-subject"
+              autocomplete="Gender"
+              required
+              >
+            <span>カウンセリング</span>
+          </div>
+          <div class="subject__field__input__container">
+            <input
+              type="radio"
+              value="体験"
+              name="contact[お問い合わせ内容]"
+              id="ContactForm-subject"
+              autocomplete="Gender"
+              required
+              >
+            <span>体験</span>
+          </div>
+          <div class="subject__field__input__container">
+            <input
+              type="radio"
+              value="両方"
+              name="contact[お問い合わせ内容]"
+              id="ContactForm-subject"
+              autocomplete="Gender"
+              required
+              >
+            <span>両方</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="field">
+          <input
+            class="field__input"
+            autocomplete="name"
+            type="text"
+            id="ContactForm-name"
+            name="contact[{{ 'templates.contact.form.name' | t }}]"
+            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+            placeholder="{{ 'templates.contact.form.name' | t }}"
+            required
+          >
+          <label class="field__label" for="ContactForm-name">
+      {{ 'templates.contact.form.name' | t }}
+      <span aria-hidden="true">*</span></label
+          </label>
+        </div>
+
+      <div class="contact__fields">
+        <div class="field">
+          <input
+            class="field__input"
+            type="tel"
+        minlength="8"
+        maxlength="8"
+        oninput="formatDateInput(this);"
+        onkeypress="return onlyHalfWidthNumbers(event);"
+        onkeyup="removeFullWidthNumbers(this);"
+        name="contact[生年月日]"
+        id="RegisterBirthday"
+        autocomplete="birthday"
+        placeholder="生年月日"
+        required
+          >
+          <label class="field__label" ffor="RegisterBirthday">生年月日 8桁
+      <span aria-hidden="true">*</span>
+          </label>
+        </div>
+
+        <div class="field field-gender">
+        <div class="gender__field__input_man_woman">
+          <div class="gender__field__input__container">
+      <input
+        type="radio"
+        value="男性"
+        name="contact[性別]"
+        id="RegisterGender"
+        autocomplete="Gender"
+        required
+      >
+            <span>男</span>
+          </div>
+          <div class="gender__field__input__container">
+     <input
+        type="radio"
+        value="女性"
+        name="contact[性別]"
+        id="RegisterGender"
+        autocomplete="Gender"
+        required
+      >
+            <span>女</span>
+          </div>
+        </div>
+        <label class="field__label" for="RegisterGender">性別
+          <span aria-hidden="true">*</span>
+        </label>
+      </div>
+      </div>
+
+      
+
+      <div class="contact__fields">
+        <div class="field field--with-error">
+          <input
+            autocomplete="email"
+            type="email"
+            id="ContactForm-email"
+            class="field__input"
+            name="contact[email]"
+            spellcheck="false"
+            autocapitalize="off"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            aria-required="true"
+            required
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="ContactForm-email-error"
+            {% endif %}
+            placeholder="{{ 'templates.contact.form.email' | t }}"
+          >
+          <label class="field__label" for="ContactForm-email">
+            {{- 'templates.contact.form.email' | t }}
+            <span aria-hidden="true">*</span></label
+          >
+        </div>
+      <div class="field">
+        <input
+          type="tel"
+          id="ContactForm-phone"
+          class="field__input"
+          autocomplete="tel"
+          name="contact[{{ 'templates.contact.form.phone' | t }}]"
+          pattern="[0-9\-]*"
+          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+          placeholder="{{ 'templates.contact.form.phone' | t }}"
+          required
+          >
+        <label class="field__label" for="ContactForm-phone">
+      {{ 'templates.contact.form.phone' | t }}
+      <span aria-hidden="true">*</span>
+        </label>
+      </div>
+      </div>
+
+      <div class="field">
+        <textarea
+          rows="10"
+          id="ContactForm-body"
+          class="text-area field__input"
+          name="contact[希望日時とコメント]"
+          placeholder="{{ 'templates.contact.form.comment' | t }}"
+          required
+        >
+第一希望：2024年○月○日 ○時ごろ
+第二希望：2024年○月○日 ○時ごろ
+第三希望：2024年○月○日 ○時ごろ
+          {{- form.body -}}
+        </textarea>
+        <label class="form__label field__label" for="ContactForm-body">
+          希望日時とコメント
+      <span aria-hidden="true">*</span>
+        </label>
+      </div>
+      <div class="contact__button">
+        <button type="submit" class="button">
+          {{ 'templates.contact.form.send' | t }}
+        </button>
+      </div>
+
+     {% if form.posted_successfully? %}
+      	<script>
+      window.location = "https://fitonline.co.jp/pages/yp-contact-thanks-page/"; 
+    </script>
+      {%- elsif form.errors -%}
+        <div class="form__message">
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+            {% render 'icon-error' %}
+            {{ 'templates.contact.form.error_heading' | t }}
+          </h2>
+        </div>
+        <ul class="form-status-list caption-large" role="list">
+          <li>
+            <a href="#ContactForm-email" class="link">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </a>
+          </li>
+        </ul>
+      {%- endif -%}  
+    {%- endform -%}
+  </div>
+  </div>
+</div>
+
+<script>
+function formatDateInput(input) {
+  // Remove any existing hyphens
+  var value = input.value.replace(/-/g, '');
+
+  // Check if the value is at least 8 characters long
+  if (value.length >= 8) {
+    // Insert hyphens in the desired positions
+    value = value.slice(0, 4) + '-' + value.slice(4, 6) + '-' + value.slice(6, 8);
+  }
+
+  // Update the input's value
+  input.value = value;
+}
+
+function onlyHalfWidthNumbers(event) {
+  var key = event.key;
+  // Allow only half-width digits (0-9) and the backspace key
+  if (!/^[0-9]$/.test(key) && key !== "Backspace") {
+    event.preventDefault();
+  }
+}
+
+function removeFullWidthNumbers(input) {
+  // Remove any full-width digits (０-９)
+  input.value = input.value.replace(/[０-９]/g, '');
+}
+</script>
+
+{% schema %}
+{
+  "name": "YPカスタム申し込みフォーム",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Contact form",
+      "label": "Heading"
+    },
+    {
+      "type": "checkbox",
+      "id": "title-center",
+      "default": false,
+      "label": "タイトルセンター寄せ"
+    },
+    {
+      "type": "text",
+      "id": "title-en",
+      "label": "英語見出し"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "richtext",
+      "id": "contact-description",
+      "label": "説明"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "text",
+      "id": "section-id",
+      "label": "セクションID"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "YPカスタム申し込みフォーム"
+    }
+  ]
+}
+{% endschema %}

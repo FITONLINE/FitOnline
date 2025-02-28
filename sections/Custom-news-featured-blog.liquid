@@ -1,0 +1,325 @@
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-featured-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .Custom-news-featured-blog .blog__posts {
+    justify-content: center;
+  }
+  .Custom-news-featured-blog .grid__item {
+    width: 100%;
+    max-width: 100%;
+  }
+  .Custom-news-featured-blog .blog__posts .article-card .card__information {
+    padding: 0;
+    align-items: start;
+  }
+  .Custom-news-featured-blog .card__content .card__heading {
+    font-size: 1.4rem;
+    margin-bottom:0;
+  }
+  .Custom-news-featured-blog .blog__button {
+    margin-top: 0;
+  }
+  .Custom-news-featured-blog .blog__post {
+    border-bottom: 1px solid #0003;
+  }
+  .Custom-news-featured-blog .card__information {
+    display: flex;
+    flex-direction: row;
+  }
+  .Custom-news-featured-blog .page-width {
+    margin: 0 auto;
+    max-width: 85rem;
+  }
+  .Custom-news-featured-blog .article-date-container {
+    width: 12rem;
+  }
+  .Custom-news-featured-blog .article_tag_container {
+    margin-right: 1.5rem;
+    padding-top:0;
+  }
+  .Custom-news-featured-blog .article__tag {
+    color: #fff;
+    background: #834E00;
+    border-radius: 2px;
+    display: inline-flex;
+    height: 22px;
+    width: 105px;
+    align-items: center;
+    justify-content: center;
+  }
+  .Custom-news-featured-blog .article-date-container {
+    font-weight: 100;
+    padding-top: 0;
+    text-align:left;
+  }
+  .Custom-news-featured-blog .card__content {
+    padding: 1rem 1rem 1rem .5rem;
+    display: flex;
+    align-items: center;
+  }
+  .Custom-news-featured-blog .news-card-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .Custom-news-featured-blog .article-card__excerpt {
+    margin: 0;
+    text-align: left;
+  }
+  .Custom-news-featured-blog .blog__button {
+    background-color: unset;
+    color: #000;
+    text-decoration: underline;
+  }
+  .Custom-news-featured-blog .blog__button:hover {
+    box-shadow:unset;
+  }
+  
+  @media screen and (min-width: 750px) {
+    .Custom-news-featured-blog .grid {
+    row-gap: 0;
+    }
+  }
+  .Custom-news-featured-blog .top-title {
+    margin: 0 0 1rem;
+  }
+  @media screen and (max-width: 500px) {
+    .Custom-news-featured-blog .card__content {
+    display: block;
+    }
+    .Custom-news-featured-blog .article__tag {
+      width: 64px
+      font-size: 1.1rem;
+    }
+    .Custom-news-featured-blog .article-date-container {
+      width: 10rem;
+    }
+    .Custom-news-featured-blog .card__heading {
+      font-size: 1.3rem;
+      margin: 1rem 0 0 0;
+    }
+  }
+  .Custom-news-featured-blog .blog__view-all {
+    margin-top: 2rem;
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign posts_displayed = section.settings.blog.articles_count
+  if section.settings.post_limit <= section.settings.blog.articles_count
+    assign posts_exceed_limit = true
+    assign posts_displayed = section.settings.post_limit
+  endif
+-%}
+<div id="{{ section.settings.section-id }}" class="Custom-news-featured-blog blog gradient{% if section.settings.heading == blank %} no-heading{% endif %}">
+  <div class="page-width gradient section-{{ section.id }}-padding">
+    {%- unless section.settings.heading == blank -%}
+      <div class="blog-title-wrapper">
+        <h2
+          id="SectionHeading-{{ section.id }}"
+          class="h2-center blog__title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+          {% endif %}
+        >
+          {{ section.settings.heading }}
+        </h2>
+        {% if section.settings.title-en != blank %}
+        <p class="title-en">{{ section.settings.title-en }}</p>
+        {% endif %}
+      </div>
+    {%- endunless -%}
+    {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}
+        <ul
+          id="Slider-{{ section.id }}"
+          class="blog__posts articles-wrapper contains-card contains-card--article{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid grid--peek grid--2-col-tablet grid--{{ section.settings.columns_desktop }}-col-desktop"
+          role="list"
+        >
+          {%- for article in section.settings.blog.articles limit: section.settings.post_limit -%}
+            <li
+              id="Slide-{{ section.id }}-{{ forloop.index }}"
+              class="blog__post grid__item article slider__slide slider__slide--full-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+              {% if settings.animations_reveal_on_scroll %}
+                data-cascade
+                style="--animation-order: {{ forloop.index }};"
+              {% endif %}
+            >
+              {% render 'Custom-news-article-card',
+                blog: section.settings.blog,
+                article: article,
+                media_aspect_ratio: 1.66,
+                show_date: section.settings.show_date,
+                show_excerpt: true
+              %}
+            </li>
+          {%- endfor -%}
+        </ul>
+
+      {%- if section.settings.show_view_all -%}
+        <div
+          class="blog__view-all center {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+          {% endif %}
+        >
+          <a
+            href="{{ section.settings.blog.url }}"
+            id="ViewAll-{{ section.id }}"
+            class="blog__button "
+            aria-labelledby="ViewAll-{{ section.id }}"
+          >
+            {{ 'sections.featured_blog.view_all' | t }}
+          </a>
+        </div>
+      {%- endif -%}
+    {%- else -%}
+      <div
+        class="blog-placeholder{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+        {% if settings.animations_reveal_on_scroll %}
+          data-cascade
+        {% endif %}
+      >
+        <div class="placeholder media media--landscape">
+          {{ 'blog-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+        <div class="blog-placeholder__content">
+          <h2>
+            {{ 'sections.featured_blog.onboarding_title' | t }}
+          </h2>
+          <p class="rte-width">
+            {{ 'sections.featured_blog.onboarding_content' | t }}
+          </p>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "カスタムニュースブログ記事",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Blog posts",
+      "label": "t:sections.featured-blog.settings.heading.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title-en",
+      "label": "英語見出し"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "t:sections.featured-blog.settings.blog.label"
+    },
+    {
+      "type": "range",
+      "id": "post_limit",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.featured-blog.settings.post_limit.label"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.featured-blog.settings.columns_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_view_all.label"
+    },
+    {
+      "type": "text",
+      "id": "section-id",
+      "label": "セクションID"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "カスタムニュースブログ記事",
+      "settings": {
+        "blog": "News"
+      }
+    }
+  ]
+}
+{% endschema %}

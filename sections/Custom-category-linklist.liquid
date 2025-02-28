@@ -1,0 +1,158 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .Custom-category-linklist {
+    padding: 1.5rem;
+  }
+  .links-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    column-gap: 3rem;
+    row-gap: 2rem;
+  }
+  .links-item {
+    width: calc(100% * 0.5 - 1.5rem);
+  }
+  .links-item h3 {
+    background-color: {{ section.settings.links-title-bg-color }};
+    text-align: center;
+    padding: 1rem 0;
+    margin: 0 0 1.8rem;
+  }
+  .links {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+  .links ul  {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    list-style-position: inside;
+  }
+  .links ul li  {
+    padding-left: 1em;
+    text-indent: -1em;
+  }
+   @media screen and (max-width: 600px) {
+     .links-container {
+       flex-direction: column;
+       align-items: center;
+     }
+     .links-item {
+       width: 100%;
+     }
+   }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient page-width Custom-category-linklist">
+  <div class="section-{{ section.id }}-padding">
+    
+    <div class="links-container">
+      {%- for block in section.blocks -%}
+        <div class="links-item">
+        <h3>{{ block.settings.links-title }}</h3>
+          <div class="links">
+        {%- for link in block.settings.menu.links -%}
+          <ul>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" style="position: relative; top: 3px; fill: #316c82;" height="1em" viewBox="0 0 448 512"><path d="M448 96c0-35.3-28.7-64-64-64L64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320zM320 256c0 6.7-2.8 13-7.7 17.6l-112 104c-7 6.5-17.2 8.2-25.9 4.4s-14.4-12.5-14.4-22l0-208c0-9.5 5.7-18.2 14.4-22s18.9-2.1 25.9 4.4l112 104c4.9 4.5 7.7 10.9 7.7 17.6z"/></svg>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          </ul>
+            
+      {% endfor %}
+          </div>
+          </div>
+      {% endfor %}
+    </div>
+      
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "トップカテゴリ別リンク",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "links-title-bg-color",
+      "label": "背景色"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "メニュー",
+      "settings": [
+        {
+          "type": "text",
+          "id": "links-title",
+          "label": "リンク集タイトル"        
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "メニュー選択"        
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "トップカテゴリ別リンク"
+    }
+  ]
+}
+{% endschema %}
+
+
+
+
+
+
+
+        

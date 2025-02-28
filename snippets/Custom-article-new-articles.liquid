@@ -1,0 +1,58 @@
+<style>
+  .new-article-item-wrapper {
+    display:flex;
+    gap: .5rem;
+  }
+  .new-article-item-img img {
+    width: 100%;
+    height: auto;
+  }
+  .new-article-item-img {
+    flex-basis: 35%;
+  }
+  .new-article-item-info {
+    flex-basis: 65%;
+  }
+  .new-article-item-info h4 {
+    margin: 0;
+    border-left: none;
+    font-weight: 400;
+    padding: 0;
+  }
+  .new-article-item-info time {
+    font-size:1.3rem;
+    color: #0a1e27;
+  }
+  @media screen and (max-width: 749px) {
+    .new-article-item-info time {
+      color: #fff;
+    }
+  }
+</style>
+
+<div class="new-article-container">
+  <h3>新着記事</h3>
+  <ul>
+  {%- assign blog = blogs[new_articles] -%}
+  {%- for article in blog.articles limit: post_limit -%}
+    <li class="new-article-item">
+      <a href="{{ article.url }}">
+        <div class="new-article-item-wrapper">
+          <div  class="new-article-item-img">
+        <img src="{{ article.image.src | img_url: 'medium' }}" 
+        loading="lazy"
+        alt="{{ article.image.alt | escape }}"
+        width="154"
+        height="86.63"
+        >
+          </div>
+          <div class="new-article-item-info">
+    {{ article.updated_at | time_tag: format: 'date' }}
+    <h4>{{ article.title }}</h4>
+        </div>
+        </div>
+      </a>
+    </li>
+    {% endfor %}
+    </ul>
+</div>

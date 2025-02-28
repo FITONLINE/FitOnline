@@ -1,0 +1,172 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .article-author-container {
+            background: #f7f7f7;
+            padding: 2rem;
+          }
+          .article-author-wrapper {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: flex-start;
+            column-gap: 3.5rem;
+          }
+          .author-image-wrapper {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            flex-basis:20%;
+          }
+          .author-name {
+            font-weight:bold;
+          }
+          .author-image {
+            width:100%;
+          }
+          .author-text-wrapper {
+            display: flex;
+            justify-content: center;
+            flex-basis:80%;
+          }
+          .author-text-wraper ul {
+            font-size: 1.5rem;
+            padding-left: 0;
+            margin: 0;
+          }
+          @media screen and (max-width: 600px) {
+            .article-author-wrapper {
+              flex-direction: column;
+              flex-wrap: wrap;
+            }
+          .author-image {
+            width:130px;
+          }
+          .author-text-wrapper ul {
+            padding-left: 2rem;
+          }
+          }
+{%- endstyle -%}
+<div class="Custom-writer color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding page-width">
+    <div class="article-author">
+      <h1 class="h2-center h2">
+        {% if section.settings.title != blank %}
+          {{ section.settings.title }}
+          {% else %}
+          {{ page.title }} 
+          {% endif %}
+      </h1>
+      <p class="title-en">
+        {% if section.settings.title_en != blank %}
+          {{ section.settings.title_en }}
+          {% else %}
+          {{ page.metafields.custom.title_en }}
+          {% endif %}
+      </p>
+    {% for block in section.blocks %}  
+        <div class="article-author-container">
+          <div class="article-author-wrapper">
+            <div class="author-image-wrapper">
+              <img class="author-image" src="{{ block.settings.author_img  | img_url: '320x'  }}" loading="lazy">
+              <p class="author-name"> {{ block.settings.author_name }}</p>
+            </div>
+            <div class="author-text-wrapper">
+              {{ block.settings.author_text }}
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+        </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "カスタム筆者",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "タイトル"
+    },
+    {
+      "type": "text",
+      "id": "title_en",
+      "label": "英語タイトル"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "author",
+      "name": "この記事を書いた人",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "author_img",
+          "label": "筆者のアイコン"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "筆者の名前"
+        },
+        {
+          "type": "richtext",
+          "id": "author_text",
+          "label": "説明"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "カスタム筆者"
+    }
+  ]
+}
+{% endschema %}

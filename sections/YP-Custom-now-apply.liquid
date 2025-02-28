@@ -1,0 +1,137 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .now-apply-button-container {
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+  .now-apply-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 5rem;
+    background:  linear-gradient(rgba(var(--color-button)), rgb(197 184 140));
+    color: rgb(var(--color-button-text));;
+    text-decoration: unset;
+  }
+  
+{%- endstyle -%}
+
+<div class="YP-Custom-now-apply color-{{ section.settings.color_scheme }} gradient page-width">
+  <div class="section-{{ section.id }}-padding">
+    {%- unless section.settings.title == blank -%} 
+    <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin {% if section.settings.title-center != false %}title-center{% endif %}">
+        {% if section.settings.title-en != blank %}
+        <p class="title-en">{{ section.settings.title-en }}</p>
+        {% endif %}
+      <h2 class="title inline-richtext {{ section.settings.heading_size }}">
+          {{ section.settings.title }}
+        </h2>
+    </div>
+    {% endunless %}
+    <div class="now-apply-button-container">
+      <a class="now-apply-button button" href="{{ section.settings.button_link }}">{{ section.settings.button_text }}</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "YPカスタム申し込み",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.multicolumn.settings.title.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "title-center",
+      "default": false,
+      "label": "タイトルセンター寄せ"
+    },
+    {
+      "type": "text",
+      "id": "title-en",
+      "label": "英語見出し"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "ボタンテキスト"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "ボタンリンク"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "presets": [
+    {
+      "name": "YPカスタム申し込み"
+    }
+  ]
+}
+{% endschema %}

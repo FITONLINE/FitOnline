@@ -1,0 +1,59 @@
+body, input, textarea, button, select {
+  font-family: serif;
+}
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-family: serif;
+}
+.bold {
+  font-weight: 700;
+}
+* a {
+  color:inherit;
+}
+
+.page-width-widefull {
+  width: 100%;
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+body, .color-background-1, .color-accent-1, .color-accent-2 {
+  color: rgba(var(--color-foreground));
+}
+.Custom-footer .footer-block__details-content .list-menu__item--link, .Custom-footer .copyright__content a {
+    color: rgba(var(--color-foreground));
+}
+
+.top-featured-blog .button {
+    --border-opacity: unset;
+  }
+
+.h2-center {
+  text-align: center;
+  margin:0;
+}
+.title-en {
+  text-align:center;
+  margin-top: 0;
+  font-size: calc(var(--font-heading-scale) * 1.4rem );
+  font-weight: 200;
+}
+
+.rte ul, .rte ol {
+  list-style-position: outside;
+}
+/*------------------------------
+  ポリシー
+------------------------------*/
+.shopify-policy__container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+.shopify-policy__title {
+  display:none;
+}

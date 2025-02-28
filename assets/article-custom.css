@@ -1,0 +1,488 @@
+/*------------------------------
+  引用
+------------------------------*/
+blockquote{
+  position:relative;
+  border-left:3px solid gray;
+  padding-left:10px;
+  margin:1.5rem 0;
+  flex-direction: column;
+}
+blockquote:before{
+    position:absolute;
+    content: url(https://cdn.shopify.com/s/files/1/0604/3956/0376/files/e08fd321473955efb2b73dd854c75d2a.svg);
+}
+blockquote p{
+    position:relative;
+    padding-left:30px;
+}
+.article-template__content blockquote cite {
+  display: block;
+  margin-top: 1rem;
+}
+blockquote cite, blockquote cite a{
+    font-size:0.8rem;
+    color:gray!important;
+}
+/*------------------------------
+  画像と引用コメント
+------------------------------*/
+.article-template__content img {
+  display:block;
+  margin-bottom: 0;
+}
+.img-source {
+  margin-top:0;
+  font-size: 1.2rem;
+}
+/*------------------------------
+  H2小見出し
+------------------------------*/
+.article-template__content h2, .article-template__content .h2{
+  padding: 0.5em;
+  color: #fff;
+  background: #0A1E27;
+  border-left: solid 10px #1A5B71;
+  font-weight:bold;
+}
+/*------------------------------
+  H3小見出し
+------------------------------*/
+h3, .h3 {
+  padding: 0.25em 0.5em;/*上下 左右の余白*/
+  background: none;
+  border-left: solid 10px #1A5B71;/*左線*/
+   font-weight:bold;
+}  
+/*------------------------------
+  H4小見出し
+------------------------------*/
+h4, .h4 {
+  padding: 0.2em 0.4em;/*上下 左右の余白*/
+  background: none;
+  border-left: solid 5px #1A5B71;/*左線*/
+   font-weight:bold;
+}  
+/*------------------------------
+  画像付き吹き出し(会話)
+------------------------------*/
+.balloon {
+  margin-bottom: 2em;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.balloon-right {
+  justify-content: flex-end;
+}
+.balloon:before,.balloon:after {
+clear: both;
+content: "";
+display: block;
+}
+.balloon figure {
+width: 60px;
+height: 60px;
+}
+.balloon-image-left {
+margin: 0 20px 0 0;
+}
+.balloon-image-right {
+margin: 0 0 0 20px;
+}
+.balloon figure img {
+width: 100%;
+height: 100%;
+border: 1px solid #aaa;
+border-radius: 50%;
+margin: 0;
+}
+.balloon-image-description {
+font-size: 10px;
+text-align: center;
+  line-height: .5;
+  margin-top: .5rem;
+}
+.balloon-text-right,.balloon-text-left {
+position: relative;
+padding: 10px;
+border: 1px solid;
+border-radius: 10px;
+max-width: -webkit-calc(100% - 95px);
+max-width: calc(100% - 110px);
+display: inline-block;
+}
+.balloon-text-right {
+border-color: #aaa;
+}
+.balloon-text-left {
+border-color: #aaa;
+}
+.balloon-text-right {
+background-color: #f2f3f7;
+}
+.balloon-text-left {
+background-color: #fce5e4;
+}
+.balloon p {
+margin: 0 0 20px;
+}
+.balloon p:last-child {
+margin-bottom: 0;
+}
+/* 三角部分 */
+.balloon-text-right:before {
+position: absolute;
+content: '';
+border: 10px solid transparent;
+border-right: 10px solid #aaa;
+top: 15px;
+left: -20px;
+}
+.balloon-text-right:after {
+position: absolute;
+content: '';
+border: 10px solid transparent;
+border-right: 10px solid #f2f3f7;
+top: 15px;
+left: -19px;
+}
+.balloon-text-left:before {
+position: absolute;
+content: '';
+border: 10px solid transparent;
+border-left: 10px solid #aaa;
+top: 15px;
+right: -20px;
+}
+.balloon-text-left:after {
+position: absolute;
+content: '';
+border: 10px solid transparent;
+border-left: 10px solid #fce5e4;
+top: 15px;
+right: -19px;
+}
+/*------------------------------
+  Youtube埋め込み
+------------------------------*/
+.youtube {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+}
+.youtube iframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.article-content a {
+  color: #0000ee;
+  text-decoration: underline;
+}
+/*------------------------------
+  リストスタイル
+------------------------------*/
+.article-content ul li {
+  list-style: square;
+  margin-left: 1.5em;
+}
+.article-content ol li {
+  list-style: decimal;
+  margin-left: 1.5em;
+}
+
+.article-template__content .list-square {
+  background: #f7f7f7;
+  padding: 3rem 3rem;
+  border: dashed;
+  list-style-position: outside;
+}
+/*------------------------------
+  リストスタイル
+------------------------------*/
+.article_ol_list {
+  list-style:none;
+}
+/*------------------------------
+  テーブルスタイル
+------------------------------*/
+table {
+    border-collapse:  collapse; /* セルの線を重ねる */
+}
+ 
+tr:nth-child(odd) {
+    background-color:  #f7f7f7;    /* 背景色指定 */
+}
+ 
+.Custom-main-article table th,
+.Custom-main-article table td {
+    padding: 5px 10px; /* 余白指定 */
+}
+/*------------------------------
+  プロフィールテーブルスタイル
+------------------------------*/
+.profile-table th, .profile-table td {
+  padding: 3px 6px!important;
+}
+/*------------------------------
+  引用リンクスタイル
+------------------------------*/
+.link-source {
+  font-size:1rem;
+  display: block;
+}
+/*------------------------------
+  画像モーダル
+------------------------------*/
+#myModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+    }
+#myModal img {
+  display: block;
+  margin: 0 auto;
+  max-width: 90%;
+  max-height: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+/*------------------------------
+  スターレーティング
+------------------------------*/
+.star5_rating{
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    white-space: nowrap;
+    color: #CCCCCC; /* グレーカラー 自由に設定化 */
+    /*font-size: 30px; フォントサイズ 自由に設定化 */
+-webkit-text-stroke: 0.5px #000;
+}
+.star5_rating:before, .star5_rating:after{
+    content: '★★★★★';
+}
+.star5_rating:after{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #ffcf32; /* イエローカラー 自由に設定化 */
+}
+.star5_rating[data-rate="5"]:after{ width: 100%; } /* 星5 */
+.star5_rating[data-rate="4.5"]:after{ width: 90%; } /* 星4.5 */
+.star5_rating[data-rate="4"]:after{ width: 80%; } /* 星4 */
+.star5_rating[data-rate="3.5"]:after{ width: 70%; } /* 星3.5 */
+.star5_rating[data-rate="3"]:after{ width: 60%; } /* 星3 */
+.star5_rating[data-rate="2.5"]:after{ width: 50%; } /* 星2.5 */
+.star5_rating[data-rate="2"]:after{ width: 40%; } /* 星2 */
+.star5_rating[data-rate="1.5"]:after{ width: 30%; } /* 星1.5 */
+.star5_rating[data-rate="1"]:after{ width: 20%; } /* 星1 */
+.star5_rating[data-rate="0.5"]:after{ width: 10%; } /* 星0.5 */
+.star5_rating[data-rate="0"]:after{ width: 0%; } /* 星0 */
+/*------------------------------
+リンクカード
+------------------------------*/
+.article_link_card_link {
+  text-decoration: none;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display:inline!important;
+}
+.article_link_card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #0A1E27;
+  position:relative;
+}
+.article_link_card_img_container {
+  flex-basis: 35%;
+}
+.article_link_card_text_container {
+  flex-basis: 65%;
+}
+.article_link_card_img_container .article_link_card_img {
+  border: 0;
+  margin: 0;
+  width: 100%;
+  display:block;
+}
+.article_link_card_title {
+  margin: .5rem 0 0 0;
+  text-decoration: underline;
+}
+.article_link_card_date {
+  margin: 0;
+  font-size: 1.4rem;
+}
+@media screen and (max-width: 500px) {
+  .article_link_card {
+    flex-direction: column;
+  }
+  .article_link_card_title {
+     font-size: 1.6rem;
+  }
+}
+/*------------------------------
+  もしもアフィリエイトスタイル
+------------------------------*/
+div .easyLink-box {
+  max-width: 100%;
+  margin-bottom:1rem;
+}
+
+@media screen and (max-width: 480px) {
+  div .easyLink-box.easyLink-size-s {
+    max-width: 100%;
+  }
+}
+
+/*------------------------------
+記事内1カラム、2カラム、購入ボタン
+------------------------------*/
+.article-flex-div {
+display: flex; 
+flex-wrap: wrap; 
+align-items: flex-end; 
+margin-bottom:1.5rem;
+justify-content: space-between;
+}
+
+@media screen and (max-width: 749px) {
+.article-flex-div {
+display: block;
+}
+}
+/*------------------------------
+  購入ボタン
+.article-buy-button {
+display: inline-flex;
+width: 100%;
+height: 5rem;
+align-items: center;
+justify-content: center;
+font-size: 2.5rem;
+background: #1a5b71;
+color: #fff!important;
+border-radius: 4px;
+box-shadow: inset 0px -8px 0px rgba(0,0,0,0.2);
+text-decoration: none;
+}
+
+.article-price {
+text-align: center;
+color:red;
+font-weight:bold;
+font-size:2.5rem;
+margin-bottom: 1rem;
+}
+------------------------------*/
+/*------------------------------
+  ランキングラベル
+------------------------------*/
+.article-rank {
+  display: inline-flex;
+  width: 4rem;
+  height: 5rem;
+  align-items: center;
+  justify-content: center;
+  background: #C7BB7E;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+  margin: 0;
+}
+.article-rank-2 {
+background:#B1AFAC;
+}
+.article-rank-3 {
+background:#B6A082;
+}
+.article-rank-4 {
+background:#484848;
+}
+/*------------------------------
+  ランキングラベル（テーブル内）
+------------------------------*/
+.article-rank-in-table {
+  max-width: 100%;
+  max-height: 3rem;
+}
+/*------------------------------
+  画像アスペクト比
+------------------------------*/
+.a_2to3 {
+  aspect-ratio: 2 / 3;
+}
+.a_1to1 {
+  aspect-ratio: 1 / 1;
+}
+/*------------------------------
+  アフィボタン
+------------------------------*/
+.link-btn {
+    text-decoration: none!important;
+    color: #fff!important;
+    font-weight: bold;
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 60px;
+    box-shadow: 0px 8px 10px -6px rgba(0,0,0,.3);
+    transition: .2s;
+}
+.link-btn:hover {
+    box-shadow: none;
+    transform: translateY(2px);
+    opacity: .8;
+}
+/***ボタン中央寄せ用***/
+.center {
+    text-align: center;
+    margin: 1.5em 0;
+}
+/***ボタン背景色***/
+.ao {
+    background: #6b6be2;
+}
+.midori {
+    background: #6be292;
+}
+.pink {
+    background: pink;
+}
+.kuro {
+   background: #3c3c3c;
+}
+.g-ao {
+    background: linear-gradient(45deg, #007adf, #00ecbc);
+}
+.g-midori {
+    background: linear-gradient(45deg, #9ae25b, #00c1e3);
+}
+.g-pink {
+    background-image: linear-gradient(45deg, #ff6e87, #fcc951);
+}
+.g-kuro {
+    background: linear-gradient(0deg,#000, #b1b1b1);
+}

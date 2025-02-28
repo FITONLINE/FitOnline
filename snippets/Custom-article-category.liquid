@@ -1,0 +1,14 @@
+<div class="category-container"  id="category">
+  <h3>記事カテゴリー</h3>
+  {%- if menu != blank -%}
+    <ul>
+    {%- for link in menu.links -%}
+      <li class="category-item">
+        <a href="{{ link.url }}">
+      {{ link.title}}
+      </a>
+      </li>
+      {%- endfor -%}
+    </ul>
+    {%- endif -%}
+    </div>

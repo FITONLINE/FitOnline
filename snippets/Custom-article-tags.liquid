@@ -1,0 +1,48 @@
+<style>
+  .tag-container ul li {
+    display: inline-block;
+    background: #0A1E27;
+    color:#fff;
+    padding: 0 5px;
+    margin: 3px;
+    border-radius: 4px;
+  }
+  @media screen and (max-width: 749px) {
+    .tag-container ul li {
+    display: inline-block;
+    background: #1A5B71;
+    color:#fff;
+    padding: 2px 7px;
+    margin: 3px;
+    border-radius: 4px;
+  }
+  }
+  
+</style>
+
+<div class="tag-container">
+  <h3>タグ一覧</h3>
+  <ul>
+  {% for tag in blog.all_tags %}
+    {% unless tag contains "年" %}
+      <li class="tag-item"><a href="/blogs/all/tagged/{{ tag | handleize }}">
+      {{ tag 
+      | replace: "personal", "パーソナル"  
+      | replace: "fitness", "フィットネス"  
+      | replace: "nutrition", "ニュートリション" 
+      | replace: "training", "トレーニング"
+      | replace: "goldgym", "ゴールドジム"
+      | replace: "-federations", "団体"
+      | replace: "physique", "フィジーク"
+      | replace: "-accessories", "グッズ"
+      | replace: "-apparel", "アパレル"
+      | replace: "-influencer", "インフルエンサー"
+      | replace: "protein", "プロテイン"
+       | replace: "gym", "ジム"
+      }}
+      </a>
+      </li>
+      {% endunless %}
+    {% endfor %}
+    </ul>
+</div>

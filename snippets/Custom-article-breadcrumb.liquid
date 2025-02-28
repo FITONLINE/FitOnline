@@ -1,0 +1,73 @@
+<style>
+  .breadcrumb-arrow:after {
+    content: ">";
+    padding: 0 5px;
+  }
+  .breadcrumb {
+    margin: 1.5rem 0 5rem;
+    font-size: 1.3rem;
+  }
+  .breadcrumb a {
+    color: #000;
+    text-decoration:none;
+  }
+  .breadcrumb .home {
+    color: #000;
+  }
+  .breadcrumb .now-page {
+    color: #000;
+    text-decoration: underline;
+  }
+  @media screen and (max-width: 500px) {
+  .breadcrumb {
+    font-size: 1rem;
+    margin: 2rem 0 0;
+  }
+  }
+</style>
+
+{% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
+<nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+  <a class="home" href="/" title="home">トップ</a>
+  {% if template contains 'page' %}
+    <span aria-hidden="true">&rsaquo;</span>
+    <span>{{ page.title }}</span>
+  {% elsif template contains 'product' %}
+  <span class="breadcrumb-arrow"></span>
+  {{ 'カテゴリーから選ぶ' | link_to: '/collections' }}
+  {% if product.collections[0] %}
+     <span class="breadcrumb-arrow"></span>
+    {{ product.collections[0].title | link_to: product.collections[0].url }}
+  {% endif %}
+     <span class="breadcrumb-arrow"></span>
+  <a href="{{ product.url }}">{{ product.title }}</a> 
+  {% elsif template contains 'collection' and collection.handle %}
+     <span class="breadcrumb-arrow"></span>
+    {% if current_tags %}
+      {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+      {{ collection.title | link_to: url }}
+       <span class="breadcrumb-arrow"></span>
+      <span>{{ current_tags | join: " + " }}</span>
+    {% else %}
+      <span>{{ collection.title }}</span>
+    {% endif %}   
+  {% elsif template == 'blog' %}
+     <span class="breadcrumb-arrow"></span>
+    {% if current_tags %}
+      {{ blog.title | link_to: blog.url }}
+       <span class="breadcrumb-arrow"></span>
+      <span>{{ current_tags | join: " + " }}</span>
+    {% else %}
+    <span>{{ blog.title }}</span>
+    {% endif %}
+  {% elsif template == 'article' %}
+     <span class="breadcrumb-arrow"></span>
+    {{ blog.title | link_to: blog.url }}
+     <span class="breadcrumb-arrow"></span>
+    <span class="now-page">{{ article.title }}</span>
+  {% else %}
+     <span class="breadcrumb-arrow"></span>
+   <span>{{ page_title }}</span>
+  {% endif %}
+</nav>
+{% endunless %}

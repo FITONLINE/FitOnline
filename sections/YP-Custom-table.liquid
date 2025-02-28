@@ -1,0 +1,390 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  {%- endstyle -%}
+
+  <style> 
+    .custom-table {
+      max-width: 91rem;
+    }
+    table {
+    border-collapse:  collapse; /* セルの線を重ねる */
+    }
+ 
+.Custom-main-article table th,
+.Custom-main-article table td {
+    padding: 5px 10px; /* 余白指定 */
+}
+
+ /*------------------------------
+  ランキングラベル
+------------------------------*/
+.article-rank {
+  display: inline-flex;
+  width: 3.2rem;
+  height: 5rem;
+  align-items: center;
+  justify-content: center;
+  background: #C7BB7E;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+.article-rank-2 {
+background:#B1AFAC;
+}
+.article-rank-3 {
+background:#B6A082;
+}
+.article-rank-4 {
+background:#484848;
+}
+/*------------------------------
+  ランキングラベル（テーブル内）
+------------------------------*/
+.article-rank-in-table {
+  max-width: 100%;
+  max-height: 3rem;
+}
+  </style>
+      <style>
+.border-none {
+          padding: unset;
+          border-left: unset;
+          display:inline-flex;
+    align-items: center;
+        }
+          .table-wrap table td {
+          text-align:center;
+          }
+          .table-wrap {
+          overflow-x: scroll;
+          padding: 2px 2px 2px 2px;
+            margin:0 auto;
+          }
+          .table-wrap table {
+          border-collapse: collapse;
+          }
+          .table-wrap tr th:first-of-type,
+          .table-wrap tr td:first-of-type {
+          width: 2.5px;
+          } 
+          .table-wrap tr th:nth-of-type(2),
+          .table-wrap tr td:nth-of-type(2) {
+          width: 13px;
+          }
+          .table-wrap tr th:nth-of-type(3),
+          .table-wrap tr td:nth-of-type(3) {
+          width: 6px;
+          }
+          .table-wrap tr th:nth-of-type(4),
+          .table-wrap tr td:nth-of-type(4) {
+          width: 4px;
+          }
+          .table-wrap tr th:nth-of-type(5),
+          .table-wrap tr td:nth-of-type(5) {
+          width: 7px;
+          }
+          .table-wrap tr th:nth-of-type(6),
+          .table-wrap tr td:nth-of-type(6) {
+          width: 5px;
+          }
+          .table-wrap tr th:nth-of-type(7),
+          .table-wrap tr td:nth-of-type(7) {
+          width: 5px;
+          }
+          .table-wrap tr th:nth-of-type(8),
+          .table-wrap tr td:nth-of-type(8) {
+          width: 5px;
+          }
+          .table-wrap tr th:nth-of-type(9),
+          .table-wrap tr td:nth-of-type(9) {
+          width: 4px;
+          }
+          
+          .table-wrap table th,
+          .table-wrap table td {
+          padding: 8px 0px;
+          font-size: 1.4rem;
+          }
+          
+          .table-sticky {
+            position: sticky;
+            top: 0;
+            left: -8px;
+            background: none;
+          }
+          .table-sticky::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-left: .1rem solid rgba(var(--color-foreground),.2);
+            border-right: .1rem solid rgba(var(--color-foreground),.2);
+            background: #fff;
+            z-index: -1;
+          }
+       th {
+    background-color:  #f7f7f7;    /* 背景色指定 */
+    }
+    .yourpersonal-table {
+    background-color:  rgba(var(--color-button), 0.5);    /* 背景色指定 */
+    }
+   .yourpersonal-table .table-sticky {
+      background-color: #fff;
+      font-size:1.8rem;
+    }
+   .table-wrap table .yourpersonal-table td {
+      font-weight:bold;
+    }
+      .yourpersonal-table .yp-per-cost {  
+     text-decoration: underline;
+      font-size:2.2rem;
+      }
+      .table-sticky-odd:before {
+          background-color: #f7f7f7;
+          }
+      .yourpersonal-table .table-sticky:before {
+          background-color: rgba(var(--color-button), 0.5);
+          color: #fff;
+          }
+          .score-board {
+          padding: 1.2rem;
+          background-color: #f2f2f2;
+          }
+          .score-board p{
+          margin: 0;
+          }
+          .total-score {
+          background: linear-gradient(transparent 50%, #ffff7f 60%);
+          font-size: 2.6rem;
+          font-weight: bold;
+          }
+          .score-detail {
+          font-size: 1.2rem;
+          }
+          .spec-item {
+            display: inline-block;
+            background: rgb(198 75 158);
+            color: #fff;
+            font-weight: bold;
+            padding: 0 0.6rem;
+            margin: 0 0.4rem 0.4rem 0;
+            border-radius: 25px;
+            font-size: 1.4rem;
+          }
+          .spec-item-gray {
+          background: rgb(198 75 158 / 20%);
+          color: #aaa;
+          }
+
+      .img-source {
+        margin-top:0;
+        font-size: 1.2rem;
+        display:none;
+      }
+      @media screen and (max-width: 959px) {
+      .img-source {
+        display:block;
+        text-align:right;
+        margin: 0;
+      }
+    }
+        .table_data_sorce {
+          font-size: 1rem;
+          margin: 0
+        }
+        .table-warning {
+          font-size: 1rem;
+          margin: 0;
+        }
+</style>
+<div id="{{ section.settings.section-id }}" class="color-{{ section.settings.color_scheme }} gradient custom-table page-width">
+  <div class="section-{{ section.id }}-padding">
+     {%- unless section.settings.title == blank -%} 
+    <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin {% if section.settings.title-center != false %}title-center{% endif %}">
+        {% if section.settings.title-en != blank %}
+        <p class="title-en">{{ section.settings.title-en }}</p>
+        {% endif %}
+      <h2 class="title inline-richtext {{ section.settings.heading_size }}">
+          {{ section.settings.title }}
+        </h2>
+    </div>
+    {% assign article = articles['all/ikebukuro-low-priced-personalgym'] %}
+    <p class="table_data_sorce">当社調べ（{{ article.title | link_to: article.url }}）</p>
+    {%- endunless -%}
+<div class="table-wrap">
+<table style="width: 80rem;">
+<tbody>
+<tr>
+<th>順位</th>
+<th class="table-sticky table-sticky-odd">パーソナルジム</th>
+<th>1回当たり</th>
+<th>時間(分)</th>
+<th>形態</th>
+<th>合計費用</th>
+<th>入会金</th>
+<th>コース料金</th>
+<th>合計回数</th>
+</tr>
+<tr>
+<td><span class="article-rank article-rank-in-table">1位</span></td>
+<td class="table-sticky">E社 池袋東口店・池袋西口店</td>
+<td>¥5,638</td>
+<td>20</td>
+<td>マシン主導</td>
+<td>¥90,200</td>
+<td>¥19,800</td>
+<td>¥70,400</td>
+<td>16</td>
+</tr>
+<tr class="yourpersonal-table">
+<td><span class="article-rank article-rank-2 article-rank-in-table">2位</span></td>
+<td class="table-sticky">YourPersonal池袋</td>
+<td class="yp-per-cost">¥6,980</td>
+<td>50</td>
+<td>トレーナー主導</td>
+<td>¥111,680</td>
+<td>¥0</td>
+<td>¥111,680</td>
+<td>16</td>
+</tr>
+<tr>
+<td><span class="article-rank article-rank-3 article-rank-in-table">3位</span></td>
+<td class="table-sticky">R社 池袋東口店・池袋西口店</td>
+<td>¥7,838</td>
+<td>60</td>
+<td>トレーナー主導</td>
+<td>¥125,400</td>
+<td>¥11,000</td>
+<td>¥114,400</td>
+<td>16</td>
+</tr>
+<tr>
+<td><span class="article-rank article-rank-4 article-rank-in-table">4位</span></td>
+<td class="table-sticky">A社 池袋店</td>
+<td>¥8,223</td>
+<td>45</td>
+  <td>トレーナー主導</td>
+<td>¥131,560</td>
+<td>¥33,000</td>
+<td>¥98,560</td>
+<td>16</td>
+</tr>
+<tr>
+<td><span class="article-rank  article-rank-4 article-rank-in-table">5位</span></td>
+<td class="table-sticky">W社 池袋支店</td>
+<td>¥8,625</td>
+<td>60</td>
+  <td>トレーナー主導</td>
+<td>¥138,000</td>
+<td>¥0</td>
+<td>¥138,000</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="img-source">（スクロール可→）</p>
+<p class="table-warning">他社が実施する時期的なキャンペーン価格（入会金無料など）を除く</p>
+    
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "YPカスタム比較表",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.multicolumn.settings.title.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "title-center",
+      "default": false,
+      "label": "タイトルセンター寄せ"
+    },
+    {
+      "type": "text",
+      "id": "title-en",
+      "label": "英語見出し"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "text",
+      "id": "section-id",
+      "label": "セクションID"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "presets": [
+    {
+      "name": "YPカスタム比較表"
+    }
+  ]
+}
+{% endschema %}
