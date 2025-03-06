@@ -401,8 +401,8 @@ background:#484848;
 }
 /* セレクトタグ -*/
 .select__select {
-  -webkit-appearance: none;
-  appearance: none;
+  -webkit-appearance: auto;
+  appearance: auto;
 }
 
 /*アフィボタン*/
