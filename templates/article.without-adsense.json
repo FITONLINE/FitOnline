@@ -32,7 +32,6 @@
         },
         "ae0ed103-a8dd-4af9-b23e-a993d62b8aa9": {
           "type": "shopify://apps/table-of-contents/blocks/theme-extension/d06f5754-affb-4dc7-a2a9-18d74d225f70",
-          "disabled": true,
           "settings": {}
         },
         "content": {
