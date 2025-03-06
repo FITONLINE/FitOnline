@@ -1,1 +1,115 @@
-{"sections":{"39df5191-202e-404a-acc8-fbf739187d9f":{"type":"Custom-articles-slide","blocks":{"ac8006b8-92e1-4e21-ae1f-6e8e3d681506":{"type":"article","settings":{"article_chosen":"all\/veatm"}},"eea99e05-9aac-4028-b1be-1f7964e17e2e":{"type":"article","settings":{"article_chosen":"all\/lyft-protein"}},"360d9c8b-48c7-4edd-aa6a-ee337f7a0433":{"type":"article","settings":{"article_chosen":"all\/trainer-client-love"}},"9a710290-cc9f-4dd6-8b51-153e09a3a3fc":{"type":"article","settings":{"article_chosen":"all\/physique"}},"54f6025a-8c46-4d2c-8d98-c90b19c477b9":{"type":"article","settings":{"article_chosen":"all\/domestic-workout-fitness-apparel-brands"}},"9f3ba4f8-101a-4146-84d1-0cfb370b2762":{"type":"article","settings":{"article_chosen":"all\/japanese-instagram-fitness-women"}},"dda6100f-2597-4571-b7ec-c42b877181dd":{"type":"article","settings":{"article_chosen":"all\/international-workout-apparel-brands"}},"69da0fd4-889f-4ee4-9065-46db21ace552":{"type":"article","settings":{"article_chosen":"all\/jbbf-and-fwj"}},"32e368be-50b3-44d2-a3db-b18cc07ddd7f":{"type":"article","settings":{"article_chosen":"all\/versagripps"}},"c67136b2-6e33-4fb5-8e37-0fceaf00dc89":{"type":"article","settings":{"article_chosen":"all\/steroid-use"}},"9bbc8c6c-8f31-488a-bcff-18ee419b2551":{"type":"article","settings":{"article_chosen":""}}},"block_order":["ac8006b8-92e1-4e21-ae1f-6e8e3d681506","eea99e05-9aac-4028-b1be-1f7964e17e2e","360d9c8b-48c7-4edd-aa6a-ee337f7a0433","9a710290-cc9f-4dd6-8b51-153e09a3a3fc","54f6025a-8c46-4d2c-8d98-c90b19c477b9","9f3ba4f8-101a-4146-84d1-0cfb370b2762","dda6100f-2597-4571-b7ec-c42b877181dd","69da0fd4-889f-4ee4-9065-46db21ace552","32e368be-50b3-44d2-a3db-b18cc07ddd7f","c67136b2-6e33-4fb5-8e37-0fceaf00dc89","9bbc8c6c-8f31-488a-bcff-18ee419b2551"],"settings":{"color_scheme":"background-1","padding_top":0,"padding_bottom":40}},"32cba7b6-3da7-44c8-bf77-82cad1e4fe16":{"type":"Custom-featured-blog","settings":{"heading":"新着記事","blog":"all","post_limit":8,"columns_desktop":4,"show_image":true,"show_date":true,"show_author":false,"excerpt_length":0,"show_view_all":true,"padding_top":0,"padding_bottom":40}},"44ddbe88-74ed-421f-b183-08ba0e9242e8":{"type":"Custom-news-featured-blog","disabled":true,"settings":{"heading":"ニュース","title-en":"","heading_size":"h2","blog":"news","post_limit":3,"columns_desktop":3,"show_date":true,"show_view_all":true,"section-id":"","padding_top":88,"padding_bottom":36}}},"order":["39df5191-202e-404a-acc8-fbf739187d9f","32cba7b6-3da7-44c8-bf77-82cad1e4fe16","44ddbe88-74ed-421f-b183-08ba0e9242e8"]}
+{
+  "sections": {
+    "39df5191-202e-404a-acc8-fbf739187d9f": {
+      "type": "Custom-articles-slide",
+      "blocks": {
+        "ac8006b8-92e1-4e21-ae1f-6e8e3d681506": {
+          "type": "article",
+          "settings": { "article_chosen": "all/veatm" }
+        },
+        "eea99e05-9aac-4028-b1be-1f7964e17e2e": {
+          "type": "article",
+          "settings": { "article_chosen": "all/lyft-protein" }
+        },
+        "360d9c8b-48c7-4edd-aa6a-ee337f7a0433": {
+          "type": "article",
+          "settings": { "article_chosen": "all/trainer-client-love" }
+        },
+        "9a710290-cc9f-4dd6-8b51-153e09a3a3fc": {
+          "type": "article",
+          "settings": { "article_chosen": "all/physique" }
+        },
+        "54f6025a-8c46-4d2c-8d98-c90b19c477b9": {
+          "type": "article",
+          "settings": {
+            "article_chosen": "all/domestic-workout-fitness-apparel-brands"
+          }
+        },
+        "9f3ba4f8-101a-4146-84d1-0cfb370b2762": {
+          "type": "article",
+          "settings": {
+            "article_chosen": "all/japanese-instagram-fitness-women"
+          }
+        },
+        "dda6100f-2597-4571-b7ec-c42b877181dd": {
+          "type": "article",
+          "settings": {
+            "article_chosen": "all/international-workout-apparel-brands"
+          }
+        },
+        "69da0fd4-889f-4ee4-9065-46db21ace552": {
+          "type": "article",
+          "settings": { "article_chosen": "all/jbbf-and-fwj" }
+        },
+        "32e368be-50b3-44d2-a3db-b18cc07ddd7f": {
+          "type": "article",
+          "settings": { "article_chosen": "all/versagripps" }
+        },
+        "c67136b2-6e33-4fb5-8e37-0fceaf00dc89": {
+          "type": "article",
+          "settings": { "article_chosen": "all/steroid-use" }
+        },
+        "9bbc8c6c-8f31-488a-bcff-18ee419b2551": {
+          "type": "article",
+          "settings": { "article_chosen": "" }
+        }
+      },
+      "block_order": [
+        "ac8006b8-92e1-4e21-ae1f-6e8e3d681506",
+        "eea99e05-9aac-4028-b1be-1f7964e17e2e",
+        "360d9c8b-48c7-4edd-aa6a-ee337f7a0433",
+        "9a710290-cc9f-4dd6-8b51-153e09a3a3fc",
+        "54f6025a-8c46-4d2c-8d98-c90b19c477b9",
+        "9f3ba4f8-101a-4146-84d1-0cfb370b2762",
+        "dda6100f-2597-4571-b7ec-c42b877181dd",
+        "69da0fd4-889f-4ee4-9065-46db21ace552",
+        "32e368be-50b3-44d2-a3db-b18cc07ddd7f",
+        "c67136b2-6e33-4fb5-8e37-0fceaf00dc89",
+        "9bbc8c6c-8f31-488a-bcff-18ee419b2551"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    },
+    "32cba7b6-3da7-44c8-bf77-82cad1e4fe16": {
+      "type": "Custom-featured-blog",
+      "settings": {
+        "heading": "新着記事",
+        "blog": "all",
+        "post_limit": 8,
+        "columns_desktop": 4,
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "excerpt_length": 0,
+        "show_view_all": true,
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    },
+    "44ddbe88-74ed-421f-b183-08ba0e9242e8": {
+      "type": "Custom-news-featured-blog",
+      "disabled": true,
+      "settings": {
+        "heading": "ニュース",
+        "title-en": "",
+        "heading_size": "h2",
+        "blog": "news",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "show_date": true,
+        "show_view_all": true,
+        "section-id": "",
+        "padding_top": 88,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "39df5191-202e-404a-acc8-fbf739187d9f",
+    "32cba7b6-3da7-44c8-bf77-82cad1e4fe16",
+    "44ddbe88-74ed-421f-b183-08ba0e9242e8"
+  ]
+}
