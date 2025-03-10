@@ -30,10 +30,6 @@
             "blog_show_author": false
           }
         },
-        "ae0ed103-a8dd-4af9-b23e-a993d62b8aa9": {
-          "type": "shopify://apps/table-of-contents/blocks/theme-extension/d06f5754-affb-4dc7-a2a9-18d74d225f70",
-          "settings": {}
-        },
         "content": {
           "type": "content",
           "settings": {}
@@ -83,6 +79,7 @@
         },
         "d814b4df-d2cd-400d-9c90-8bba432f185a": {
           "type": "new-articles",
+          "disabled": true,
           "settings": {
             "new_articles": "all",
             "post_limit": 5
@@ -94,13 +91,16 @@
           "settings": {
             "ad_html": "<style>\n.ad {\ndisplay:none;\n}\n@media screen and (min-width: 1000px) {\n.ad {\ndisplay:block;\nposition: sticky;\ntop: 150px;\n}\n.ad img {\nwidth:100%;\n}\n}\n</style>\n{% if article.metafields.custom.banner != false %}\n<a target=\"_blank\" href=\"https://c.affitch.com?ref=GJFNCW624HHJ\">\n<img src=\"https://cdn.shopify.com/s/files/1/0604/3956/0376/files/new-year-vol-3.webp?v=1706328855\" alt=\"veatm\">\n</a>\n{% endif %}"
           }
+        },
+        "table_of_contents_8nnVP4": {
+          "type": "table-of-contents",
+          "settings": {}
         }
       },
       "block_order": [
         "857fa7f9-448d-47a3-b504-849ee032a0cd",
         "featured_image",
         "title",
-        "ae0ed103-a8dd-4af9-b23e-a993d62b8aa9",
         "content",
         "772daf27-e53b-4eac-8dfd-b2f62ff94c8c",
         "ba2625c0-6ee1-443f-b300-a1751f56a6f9",
@@ -110,7 +110,8 @@
         "fa1985ff-9e30-4ebe-b412-8dc9c335c870",
         "ec9a3c4d-2fbe-447e-a3fa-00ceb8facb46",
         "d814b4df-d2cd-400d-9c90-8bba432f185a",
-        "99b0378b-5bf5-44ee-a3c1-85a099074efc"
+        "99b0378b-5bf5-44ee-a3c1-85a099074efc",
+        "table_of_contents_8nnVP4"
       ],
       "settings": {
         "pr_text": "[PR]",
