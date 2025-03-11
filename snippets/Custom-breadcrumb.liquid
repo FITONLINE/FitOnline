@@ -1,4 +1,4 @@
-<style>
+{% style %}
   .breadcrumb-arrow:after {
     content: ">";
     padding: 0 5px;
@@ -25,10 +25,10 @@
     margin: 2rem 0 0;
   }
   }
-</style>
+{% endstyle %}
 
 {% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
-<nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+<nav class="breadcrumb page-width-article" role="navigation" aria-label="breadcrumbs">
   <a class="home" href="/" title="home">トップ</a>
   {% if template contains 'page' %}
     <span aria-hidden="true">&rsaquo;</span>

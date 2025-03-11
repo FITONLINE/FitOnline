@@ -1,21 +1,16 @@
 {% style %}
-  .toc-container {
-    margin: 4rem 0 4rem 0;
-    padding: 0 0 4rem 0;
+  .toc-container-wrapper {
     position: sticky;
     top: 160px;
+  }
+  .toc-container {
+    margin: 0 0 4rem 0;
+    padding: 0 0 4rem 0;
     max-height: 500px;
     overflow: scroll;
   }
-
   .toc-close-btn {
     display: none;
-  }
-
-  .toc-title {
-    margin: 0 0 1rem 0;
-    font-weight: bold;
-    color: #0a1e27;
   }
   .toc-list {
     margin: 0;
@@ -24,10 +19,14 @@
   }
   .toc-item {
     margin-bottom: 0.5rem;
+    padding-left: 2rem;
+    text-indent: -2rem;
   }
   .toc-item-h3 {
-    margin-left: 1rem;
+    margin-left: 3rem;
     font-size: 1.4rem;
+    padding-left: 3.5rem;
+    text-indent: -3.5rem;
   }
   .toc-item a {
     color: #333;
@@ -51,13 +50,14 @@
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-
   .toc-overlay.active {
     display: block;
     opacity: 1;
   }
-
   @media screen and (max-width: 999px) {
+    .toc-container-wrapper {
+      position: unset;
+    }
     .toc-container {
       margin-top: 0;
       position: fixed;
@@ -73,15 +73,15 @@
       padding: 20px;
       overflow-y: auto;
     }
-
+    .toc-title {
+      display: none;
+    }
     .toc-close-btn.close-btn-active {
       display: block;
     }
-
     .toc-container.active {
       right: 0;
     }
-
     .toc-close-btn {
       position: absolute;
       top: 10px;
@@ -95,10 +95,12 @@
   }
 {% endstyle %}
 
-<div id="toc-overlay" class="toc-overlay"></div>
-<div id="table-of-contents" class="toc-container">
-  <button class="toc-close-btn" id="toc-close-btn">×</button>
-</div>
+<div class="toc-container-wrapper">
+  <div id="toc-overlay" class="toc-overlay"></div>
+  <h3 class="toc-title">目次</h3>
+  <div id="table-of-contents" class="toc-container">
+    <button class="toc-close-btn" id="toc-close-btn">×</button>
+  </div>
 
 <script defer="defer">
   // 目次を自動生成する関数
@@ -114,12 +116,6 @@
     // サイドバーの目次コンテナを取得
     const tocContainer = document.querySelector('#table-of-contents');
     if (!tocContainer) return;
-
-    // 目次のタイトルを作成
-    const tocTitle = document.createElement('p');
-    tocTitle.textContent = '目次';
-    tocTitle.className = 'toc-title';
-    tocContainer.appendChild(tocTitle);
 
     // 目次リストを作成
     const tocList = document.createElement('ul');

@@ -1,4 +1,4 @@
-<style>
+{% style %}
   .article-prev-next-container {
     display: flex;
     justify-content: space-between;
@@ -29,11 +29,12 @@
     }
   }
   
-</style>
+{% endstyle %}
 
-<div class="article-prev-next-container">
-  <div class="prev">
-{% if blog.previous_article %}
+<div class="page-width-article">
+  <div class="article-prev-next-container">
+    <div class="prev">
+      {% if blog.previous_article %}
   {{ '一つ前の記事' | link_to: blog.previous_article }}
   {% else %}
   <span>一つ前の記事</span>
@@ -51,4 +52,5 @@
     <span>一つ後の記事</span>
     {% endif %}       
     </div>
+  </div>
 </div>

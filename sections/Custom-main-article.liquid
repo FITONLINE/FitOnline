@@ -2,19 +2,18 @@
 {{ 'article-custom.css' | asset_url | stylesheet_tag }}
 
 <style>
-  .Custom-main-article {
+  .page-width-article {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-  }
-  .article-template__hero-container {
-    width: calc(100% + 30px);
-    margin: 1rem -15px;
   }
   .article-template header {
     margin-top: 2rem;
   }
   .circle-divider:after {
     content: none;
+  }
+  article {
+    padding: 3rem 0;
   }
   .Custom-main-article .article-tags {
     font-size: 1rem;
@@ -31,9 +30,6 @@
   .menu ul {
     list-style: none;
     padding-left: 0;
-  }
-  .menu ul li {
-    padding-left: 1rem;
   }
   .menu ul li a {
     position: relative;
@@ -53,33 +49,21 @@
   }
   @media screen and (min-width: 1000px) {
     .Custom-main-article {
-      padding-left: 8rem;
-      padding-right: 8rem;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      grid-template-rows: 1fr;
-      grid-column-gap: 4rem;
-      grid-row-gap: 0px;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      display: flex;
+      column-gap: 3rem;
+      max-width: 126rem;
+      margin: 0 auto;
     }
     article {
-      padding: 0 4rem;
-      border: 0.1px solid rgb(0 0 0 / 15%);
       margin-bottom: 2rem;
     }
     .article_section_left {
-      grid-area: 1 / 1 / 2 / 2;
-      max-width: 800px;
+      flex: 1;
     }
     aside {
-      grid-area: 1 / 2 / 2 / 3;
-    }
-    .article-template__hero-container {
-      width: calc(100% + 80px);
-      margin: 0 -40px;
-    }
-    .Custom-main-article h1 {
-      width: calc(100% + 70px);
-      margin: 0 -35px;
+      flex: 0 0 40rem;
     }
   }
 
@@ -153,7 +137,7 @@
           {%- when 'featured_image' -%}
             {%- if article.image -%}
               <div
-                class="page-width-widefull page-width--narrow article-template__hero-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+                class="page-width-widefull {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
                 {{ block.shopify_attributes }}
               >
                 <div
@@ -187,7 +171,7 @@
 
           {%- when 'title' -%}
             <header
-              class="page-width-widefull page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+              class="page-width-article {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
               {{ block.shopify_attributes }}
             >
               <h1
@@ -211,7 +195,7 @@
 
           {%- when 'content' -%}
             <div
-              class="article-template__content page-width-widefull page-width--narrow rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+              class="article-template__content rte page-width-article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
               itemprop="articleBody"
               {{ block.shopify_attributes }}
             >
@@ -278,7 +262,9 @@
               {% render 'share-button', block: block, share_link: share_url %}
             </div>
           {%- when 'content_policy' -%}
-            {% render 'Custom-content-policy', content_policy_text: block.settings.content_policy_text %}
+            {% render 'Custom-content-policy', 
+              content_policy_text: block.settings.content_policy_text 
+            %}
           {%- when 'author' -%}
             {% render 'Custom-article-author',
               author_title: block.settings.author_title,
@@ -293,9 +279,6 @@
             %}
           {%- when 'prev_next_btn' -%}
             {% render 'Custom-article-prev-next' %}
-
-          {%- when 'relatedblogs' -%}
-            {% render 'relatedblogs' %}
 
           {%- when 'grid_ad' -%}
             {% render 'Custom-article-grid-ad', grid_ad_html: block.settings.grid_ad_html %}
@@ -489,7 +472,7 @@
     </article>
   </div>
 
-  <aside class="menu">
+  <aside class="menu page-width-article">
     {%- for block in section.blocks -%}
       {%- case block.type -%}
         {%- when 'ad' -%}
@@ -878,11 +861,6 @@
     {
       "type": "prev_next_btn",
       "name": "前へ次へボタン",
-      "limit": 1
-    },
-    {
-      "type": "relatedblogs",
-      "name": "関連記事",
       "limit": 1
     },
     {
