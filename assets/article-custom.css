@@ -363,6 +363,9 @@ div .easyLink-box {
   width: 100%;
   position: relative;
 }
+.article-max-div-child.mw-420 {
+  max-width: 420px;
+}
 .article-flex-div-child img,
 .article-max-div-child img {
   width: 100%;
