@@ -358,20 +358,31 @@ div .easyLink-box {
 .article-flex-div-child {
   flex-basis: calc(100% / 2 - 0.5rem);
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 .article-max-div-child {
   width: 100%;
   position: relative;
+  margin-bottom: 1rem;
+}
+.article-max-div-child.mw-220 {
+  max-width: 320px;
+}
+.article-max-div-child.mw-320 {
+  max-width: 320px;
 }
 .article-max-div-child.mw-420 {
   max-width: 420px;
+}
+.article-max-div-child.mw-220 {
+  max-width: 220px;
 }
 .article-flex-div-child img,
 .article-max-div-child img {
   width: 100%;
   height: auto;
 }
-
 /*出典文字スタイル*/
 .img-source {
   margin-top: 0;

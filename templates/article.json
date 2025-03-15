@@ -41,12 +41,28 @@
           }
         },
         "ba2625c0-6ee1-443f-b300-a1751f56a6f9": {
-          "type": "author",
+          "type": "author2",
+          "settings": {
+            "author_title2": "",
+            "author_name2": "",
+            "author_text2": "",
+            "author_link2": "",
+            "author_web2": "",
+            "author_instagram2": "",
+            "author_youtube2": ""
+          }
+        },
+        "metaobject_author": {
+          "type": "metaobject_author",
+          "settings": {}
+        },
+        "author_XiYpmr": {
+          "type": "author1",
           "settings": {
             "author_title": "この記事を書いた人",
             "author_img": "shopify://shop_images/NG20220709Shopify.webp",
             "author_name": "フィット",
-            "author_text": "<ul><li>筋トレ歴10年目</li><li>パーソナルトレーナー6年目</li><li>飲んできたプロテインの種類30種類以上</li><li>ANYTIME、JOYFIT、FASTGYM、ゴールドジム、東急スポーツオアシスなど計10以上の大手ジム利用経験あり</li><li>通算1,000名以上のお客様へカウンセリング・セッション</li><li>某大手上場企業パーソナルトレーニングジムにてパーソナルトレーナーデビュー</li><li>その後、社内で最速級の速さで店長へ就任</li><li>お客様の最高減量幅34kg</li><li>2020年4月フリーランスパーソナルトレーナーとして独立</li><li>パーソナルトレーナーとして最高月収150万円達成</li></ul>",
+            "author_text": "<ul>\n<li>筋トレ歴10年目</li>\n<li>パーソナルトレーナー6年目</li>\n<li>飲んできたプロテインの種類30種類以上</li>\n<li>ANYTIME、JOYFIT、FASTGYM、ゴールドジム、東急スポーツオアシスなど計10以上の大手ジム利用経験あり</li>\n<li>通算1,000名以上のお客様へカウンセリング・セッション</li>\n<li>某大手上場企業パーソナルトレーニングジムにてパーソナルトレーナーデビュー</li>\n<li>その後、社内で最速級の速さで店長へ就任</li>\n<li>お客様の最高減量幅34kg</li>\n<li>2020年4月フリーランスパーソナルトレーナーとして独立</li>\n<li>パーソナルトレーナーとして最高月収150万円達成</li>\n</ul>",
             "author_link": "shopify://pages/writer-and-supervisor",
             "author_web": "",
             "author_instagram": "",
@@ -55,16 +71,6 @@
         },
         "bf76223a-71f5-44f3-af95-a25b00d2b400": {
           "type": "prev_next_btn",
-          "settings": {}
-        },
-        "5e780397-9688-4b44-88ff-08db94fa5019": {
-          "type": "grid_ad",
-          "settings": {
-            "grid_ad_html": "<script async=\"\" src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8070459482460907\" crossorigin=\"anonymous\"></script>\n<ins class=\"adsbygoogle\" style=\"display:block\" data-ad-format=\"autorelaxed\" data-ad-client=\"ca-pub-8070459482460907\" data-ad-slot=\"4974643087\"></ins>\n<script>\n     (adsbygoogle = window.adsbygoogle || []).push({});\n</script>"
-          }
-        },
-        "8db1a584-ecea-4ae1-b69d-6393e0fd9643": {
-          "type": "relatedblogs",
           "settings": {}
         },
         "fa1985ff-9e30-4ebe-b412-8dc9c335c870": {
@@ -104,9 +110,9 @@
         "content",
         "772daf27-e53b-4eac-8dfd-b2f62ff94c8c",
         "ba2625c0-6ee1-443f-b300-a1751f56a6f9",
+        "metaobject_author",
+        "author_XiYpmr",
         "bf76223a-71f5-44f3-af95-a25b00d2b400",
-        "5e780397-9688-4b44-88ff-08db94fa5019",
-        "8db1a584-ecea-4ae1-b69d-6393e0fd9643",
         "fa1985ff-9e30-4ebe-b412-8dc9c335c870",
         "ec9a3c4d-2fbe-447e-a3fa-00ceb8facb46",
         "d814b4df-d2cd-400d-9c90-8bba432f185a",
@@ -120,7 +126,5 @@
       }
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["main"]
 }

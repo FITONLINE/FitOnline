@@ -262,11 +262,10 @@
               {% render 'share-button', block: block, share_link: share_url %}
             </div>
           {%- when 'content_policy' -%}
-            {% render 'Custom-content-policy', 
-              content_policy_text: block.settings.content_policy_text 
-            %}
-          {%- when 'author' -%}
+            {% render 'Custom-content-policy', content_policy_text: block.settings.content_policy_text %}
+          {%- when 'author1' -%}
             {% render 'Custom-article-author',
+              author1: true,
               author_title: block.settings.author_title,
               author_img: block.settings.author_img,
               author_name: block.settings.author_name,
@@ -277,6 +276,21 @@
               author_youtube: block.settings.author_youtube,
               author_web: block.settings.author_web
             %}
+          {%- when 'author2' -%}
+            {% if article.metafields.custom.author != blank %}
+              {% assign author_metaobject = article.metafields.custom.author.value %}
+              {% render 'Custom-article-author',
+                author2: true,
+                author_title2: author_metaobject.title.value,
+                author_img2: author_metaobject.image.value,
+                author_name2: author_metaobject.name.value,
+                author_text2: author_metaobject.text.value,
+                author_link2: author_metaobject.detail_link.value,
+                author_web2: author_metaobject.web_link.value,
+                author_instagram2: author_metaobject.instagram.value,
+                author_youtube2: author_metaobject.youtube.value
+              %}
+            {% endif %}
           {%- when 'prev_next_btn' -%}
             {% render 'Custom-article-prev-next' %}
 
@@ -812,9 +826,9 @@
       ]
     },
     {
-      "type": "author",
-      "name": "筆者・監修者",
-      "limit": 5,
+      "type": "author1",
+      "name": "筆者・監修者1",
+      "limit": 1,
       "settings": [
         {
           "type": "text",
@@ -832,7 +846,7 @@
           "label": "筆者の名前"
         },
         {
-          "type": "richtext",
+          "type": "textarea",
           "id": "author_text",
           "label": "説明"
         },
@@ -857,6 +871,11 @@
           "label": "YouTubeリンク"
         }
       ]
+    },
+    {
+      "type": "author2",
+      "name": "筆者・監修者2",
+      "limit": 1
     },
     {
       "type": "prev_next_btn",
