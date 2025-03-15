@@ -42,18 +42,6 @@
         },
         "ba2625c0-6ee1-443f-b300-a1751f56a6f9": {
           "type": "author2",
-          "settings": {
-            "author_title2": "",
-            "author_name2": "",
-            "author_text2": "",
-            "author_link2": "",
-            "author_web2": "",
-            "author_instagram2": "",
-            "author_youtube2": ""
-          }
-        },
-        "metaobject_author": {
-          "type": "metaobject_author",
           "settings": {}
         },
         "author_XiYpmr": {
@@ -110,7 +98,6 @@
         "content",
         "772daf27-e53b-4eac-8dfd-b2f62ff94c8c",
         "ba2625c0-6ee1-443f-b300-a1751f56a6f9",
-        "metaobject_author",
         "author_XiYpmr",
         "bf76223a-71f5-44f3-af95-a25b00d2b400",
         "fa1985ff-9e30-4ebe-b412-8dc9c335c870",
@@ -126,5 +113,7 @@
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

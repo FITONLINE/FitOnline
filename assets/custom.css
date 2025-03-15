@@ -40,9 +40,6 @@ body, .color-background-1, .color-accent-1, .color-accent-2 {
   font-weight: 200;
 }
 
-.rte ul, .rte ol {
-  list-style-position: outside;
-}
 /*ポリシー*/
 .shopify-policy__container {
   max-width: 1000px;
