@@ -52,7 +52,15 @@
                   {{ article.image | image_url }} {{ article.image.width }}w
                 "
               src="{{article.image | image_url: width: 360 }}" 
-              loading="lazy" 
+              {% assign index = forloop.index %}
+              {% unless
+                index == 1 or 
+                index == 2 or 
+                index == 3 or 
+                index == 4 
+              %}
+              loading="lazy"
+              {% endunless %}
               width="{{ article.image.width }}" 
               height="{{ article.image.height }}"
               alt="{{ article.image.alt | escape }}">

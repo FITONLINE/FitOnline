@@ -102,7 +102,14 @@
                 alt="{{ article.image.src.alt | escape }}"
                 class="motion-reduce"
                 {% unless lazy_load == false %}
+                  {% unless
+                    index == 1 or 
+                    index == 2 or 
+                    index == 3 or 
+                    index == 4 
+                  %}
                   loading="lazy"
+                  {% endunless %}
                 {% endunless %}
                 width="{{ article.image.width }}"
                 height="{{ article.image.height }}"

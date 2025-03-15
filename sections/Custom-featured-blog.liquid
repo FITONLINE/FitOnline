@@ -97,6 +97,7 @@
               {% endif %}
             >
               {% render 'Custom-article-card',
+                index: forloop.index,
                 blog: section.settings.blog,
                 article: article,
                 media_aspect_ratio: 1.66,
