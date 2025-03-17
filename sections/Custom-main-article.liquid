@@ -27,15 +27,18 @@
     width: 145px;
     height: 45px;
   }
-  .menu ul {
+  aside.menu {
+    padding-bottom: 5rem;
+  }
+  aside.menu ul {
     list-style: none;
     padding-left: 0;
   }
-  .menu ul li a {
+  aside.menu ul li a {
     position: relative;
     text-decoration: none;
   }
-  .menu ul li a:after {
+  aside.menu ul li a:after {
     position: absolute;
     bottom: -4px;
     left: 0;
@@ -63,7 +66,7 @@
       flex: 1;
       overflow: hidden;
     }
-    aside {
+    aside.menu {
       flex: 0 0 40rem;
     }
   }
@@ -253,7 +256,7 @@
                   {{ newtext[1] }}
                 {% endfor %}
               </div> 
-              
+
           {%- when 'share' -%}
             <div
               class="article-template__social-sharing page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -614,29 +617,6 @@
     text-decoration: unset;
   }
 </style>
-
-<script>
-  // バナーを閉じる関数
-  function closeBanner() {
-    var bannerContainer = document.getElementById('banner-small');
-    bannerContainer.style.display = 'none';
-  }
-</script>
-
-<script>
-  //画像モーダル
-  function displayModal(image) {
-    var modal = document.getElementById('myModal');
-    var modalImage = document.getElementById('modalImage');
-    modal.style.display = 'block';
-    modalImage.src = image.src;
-  }
-
-  function closeModal() {
-    var modal = document.getElementById('myModal');
-    modal.style.display = 'none';
-  }
-</script>
 
 <script>
   // すべてのimg要素とvideo要素を取得
