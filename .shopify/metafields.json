@@ -29,6 +29,16 @@
         "name": "number_integer",
         "category": "NUMBER"
       }
+    },
+    {
+      "key": "author",
+      "namespace": "custom",
+      "name": "筆者・監修者",
+      "description": "",
+      "type": {
+        "name": "metaobject_reference",
+        "category": "REFERENCE"
+      }
     }
   ],
   "blog": [],

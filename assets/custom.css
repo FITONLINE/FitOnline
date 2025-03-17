@@ -1,3 +1,6 @@
+body {
+  line-height: 1.3;
+}
 body, input, textarea, button, select {
   font-family: serif;
 }

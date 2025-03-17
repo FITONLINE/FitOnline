@@ -71,21 +71,6 @@
           "type": "tags",
           "settings": {}
         },
-        "d814b4df-d2cd-400d-9c90-8bba432f185a": {
-          "type": "new-articles",
-          "disabled": true,
-          "settings": {
-            "new_articles": "all",
-            "post_limit": 5
-          }
-        },
-        "99b0378b-5bf5-44ee-a3c1-85a099074efc": {
-          "type": "ad",
-          "disabled": true,
-          "settings": {
-            "ad_html": "<style>\n.ad {\ndisplay:none;\n}\n@media screen and (min-width: 1000px) {\n.ad {\ndisplay:block;\nposition: sticky;\ntop: 150px;\n}\n.ad img {\nwidth:100%;\n}\n}\n</style>\n{% if article.metafields.custom.banner != false %}\n<a target=\"_blank\" href=\"https://c.affitch.com?ref=GJFNCW624HHJ\">\n<img src=\"https://cdn.shopify.com/s/files/1/0604/3956/0376/files/new-year-vol-3.webp?v=1706328855\" alt=\"veatm\">\n</a>\n{% endif %}"
-          }
-        },
         "table_of_contents_8nnVP4": {
           "type": "table-of-contents",
           "settings": {}
@@ -102,8 +87,6 @@
         "bf76223a-71f5-44f3-af95-a25b00d2b400",
         "fa1985ff-9e30-4ebe-b412-8dc9c335c870",
         "ec9a3c4d-2fbe-447e-a3fa-00ceb8facb46",
-        "d814b4df-d2cd-400d-9c90-8bba432f185a",
-        "99b0378b-5bf5-44ee-a3c1-85a099074efc",
         "table_of_contents_8nnVP4"
       ],
       "settings": {

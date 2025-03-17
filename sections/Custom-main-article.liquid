@@ -61,6 +61,7 @@
     }
     .article_section_left {
       flex: 1;
+      overflow: hidden;
     }
     aside {
       flex: 0 0 40rem;
@@ -194,65 +195,65 @@
             </header>
 
           {%- when 'content' -%}
-            <div
-              class="article-template__content rte page-width-article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-              itemprop="articleBody"
-              {{ block.shopify_attributes }}
-            >
-              {% assign divider = '[DIVIDER]' %}
-              {% assign dividerClose = '[/DIVIDER]' %}
-              {% assign text = article.content | split: divider %}
-              {{ text[0] }}
-              {% for divider in text offset: 1 %}
-                {% assign x = forloop.index %}
-                {% assign newtext = text[x] | split: dividerClose %}
-                {% assign targetHandle = newtext[0] %}
-                {% assign articleHandle = 'all/' | append: targetHandle %}
-                {% for article in blogs.all.articles %}
-                  {% if article.handle == articleHandle %}
-                    <div class="article_link_card article-{{ article.id }}">
-                      <a href="{{ article.url }}" class="article_link_card_link" title="{{ article.title }}"></a>
-                      <div class="article_link_card_img_container">
-                        <img
-                          src="{{ article.image.src | img_url: 'large' }}"
-                          loading="lazy"
-                          alt="{{ article.image.alt | escape }}"
-                          width="242"
-                          height="137"
-                          class="article_link_card_img"
-                        >
+              <div
+                class="article-template__content rte page-width-article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                itemprop="articleBody"
+                {{ block.shopify_attributes }}
+              >
+                {% assign divider = '[DIVIDER]' %}
+                {% assign dividerClose = '[/DIVIDER]' %}
+                {% assign text = article.content | split: divider %}
+                {{ text[0] }}
+                {% for divider in text offset: 1 %}
+                  {% assign x = forloop.index %}
+                  {% assign newtext = text[x] | split: dividerClose %}
+                  {% assign targetHandle = newtext[0] %}
+                  {% assign articleHandle = 'all/' | append: targetHandle %}
+                  {% for article in blogs.all.articles %}
+                    {% if article.handle == articleHandle %}
+                      <div class="article_link_card article-{{ article.id }}">
+                        <a href="{{ article.url }}" class="article_link_card_link" title="{{ article.title }}"></a>
+                        <div class="article_link_card_img_container">
+                          <img
+                            src="{{ article.image.src | img_url: 'large' }}"
+                            loading="lazy"
+                            alt="{{ article.image.alt | escape }}"
+                            width="242"
+                            height="137"
+                            class="article_link_card_img"
+                          >
+                        </div>
+                        <div class="article_link_card_text_container">
+                          <p class="article_link_card_date">{{ article.updated_at | time_tag: format: 'date' }}</p>
+                          <p class="article_link_card_title">{{ article.title }}</p>
+                        </div>
                       </div>
-                      <div class="article_link_card_text_container">
-                        <p class="article_link_card_date">{{ article.updated_at | time_tag: format: 'date' }}</p>
-                        <p class="article_link_card_title">{{ article.title }}</p>
-                      </div>
-                    </div>
+                    {% endif %}
+                  {% endfor %}
+                  {% if targetHandle == 'ad' %}
+                    <script
+                      crossorigin="anonymous"
+                      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8070459482460907"
+                      async=""
+                    ></script>
+                    <ins
+                      class="adsbygoogle adsense_article"
+                      style="display: block; text-align: center;"
+                      data-ad-layout="in-article"
+                      data-ad-format="fluid"
+                      data-ad-client="ca-pub-8070459482460907"
+                      data-ad-slot="9981210144"
+                      data-full-width-responsive="false"
+                    >
+                    </ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                   {% endif %}
+                  {{ newtext[1] }}
                 {% endfor %}
-                {% if targetHandle == 'ad' %}
-                  <script
-                    crossorigin="anonymous"
-                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8070459482460907"
-                    async=""
-                  ></script>
-                  <ins
-                    class="adsbygoogle adsense_article"
-                    style="display: block; text-align: center;"
-                    data-ad-layout="in-article"
-                    data-ad-format="fluid"
-                    data-ad-client="ca-pub-8070459482460907"
-                    data-ad-slot="9981210144"
-                    data-full-width-responsive="false"
-                  >
-                  </ins>
-                  <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                  </script>
-                {% endif %}
-                {{ newtext[1] }}
-              {% endfor %}
-            </div>
-
+              </div> 
+              
           {%- when 'share' -%}
             <div
               class="article-template__social-sharing page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
