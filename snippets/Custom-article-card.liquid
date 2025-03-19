@@ -17,7 +17,7 @@
 {% endcomment %}
 
 <style>
-  .custom-article-card .card__heading, 
+  .custom-article-card .card__heading,
   .custom-article-card .article-card__info {
     text-align: left;
   }
@@ -28,19 +28,18 @@
   .custom-article-card .caption-with-letter-spacing {
     font-size: 1.4rem;
     padding-top: 0;
-    margin-bottom: .8rem;
+    margin-bottom: 0.8rem;
   }
   .custom-article-card .article-tags {
-
   }
   .custom-article-card .circle-divider {
     margin-right: 1.2rem;
   }
   .custom-article-card .circle-divider::after {
-  content: none;
+    content: none;
   }
   .custom-article-card .article-card .card__information {
-    padding:1rem;
+    padding: 1rem;
   }
 
   @media screen and (max-width: 749px) {
@@ -102,13 +101,8 @@
                 alt="{{ article.image.src.alt | escape }}"
                 class="motion-reduce"
                 {% unless lazy_load == false %}
-                  {% unless
-                    index == 1 or 
-                    index == 2 or 
-                    index == 3 or 
-                    index == 4 
-                  %}
-                  loading="lazy"
+                  {% unless index == 1 or index == 2 or index == 3 or index == 4 %}
+                    loading="lazy"
                   {% endunless %}
                 {% endunless %}
                 width="{{ article.image.width }}"
@@ -161,44 +155,69 @@
         <div class="card__information">
           <div class="article-card__info caption-with-letter-spacing h5">
             {%- if show_date -%}
-              <svg xmlns="http://www.w3.org/2000/svg" style="position: relative; top: 1px;" height="1.4rem" viewBox="0 0 448 512"><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                style="position: relative; top: 1px;"
+                height="1.4rem"
+                viewBox="0 0 448 512"
+              >
+                <path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/>
+              </svg>
               <span class="circle-divider">{{ article.updated_at | time_tag: format: 'date' }}</span><br>
             {%- endif -%}
-  
-          
-  
-            <svg xmlns="http://www.w3.org/2000/svg" style="position: relative; top: 1px;" height="1.4rem" viewBox="0 0 448 512"><path d="M0 80V229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5 0L418.7 317.3c25-25 25-65.5 0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7H48C21.5 32 0 53.5 0 80zm112 32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
-              {% for tag in article.tags %}
-              {% if tag == "personal" or tag == "fitness" or tag == "nutrition" or tag == "training"  %}
-                  <span class="article-tags">
-                {{ tag 
-                | replace: "personal", "パーソナル"  
-                | replace: "fitness", "フィットネス"  
-                | replace: "nutrition", "ニュートリション" 
-                | replace: "training", "トレーニング" 
-                }}
-                </span>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              style="position: relative; top: 1px;"
+              height="1.4rem"
+              viewBox="0 0 448 512"
+            >
+              <path d="M0 80V229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5 0L418.7 317.3c25-25 25-65.5 0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7H48C21.5 32 0 53.5 0 80zm112 32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+            </svg>
+            {% assign translated_tags = '' %}
+            {% for tag in article.tags %}
+              {% if tag == 'personal'
+                or tag == 'fitness'
+                or tag == 'nutrition'
+                or tag == 'training'
+                or tag == 'tools-and-calculators'
+              %}
+                {% assign translated_tag = tag
+                  | replace: 'personal', 'パーソナル'
+                  | replace: 'fitness', 'フィットネス'
+                  | replace: 'nutrition', 'ニュートリション'
+                  | replace: 'training', 'トレーニング'
+                  | replace: 'tools-and-calculators', 'ツールと計算'
+                %}
+                {% if translated_tags != '' %}
+                  {% assign translated_tags = translated_tags | append: ', ' | append: translated_tag %}
+                {% else %}
+                  {% assign translated_tags = translated_tag %}
                 {% endif %}
-              {% endfor %}
-            
+              {% endif %}
+            {% endfor %}
+            {% if translated_tags != '' %}
+              <span class="article-tags">{{ translated_tags }}</span>
+            {% endif %}
+
             {%- if show_author -%}
               <span>{{ article.author }}</span>
             {%- endif -%}
           </div>
-            <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
+          <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
             <a href="{{ article.url }}" class="full-unstyled-link">
               {{ article.title | truncate: 50 | escape }}
             </a>
           </h3>
           {%- if show_excerpt -%}
-            {%- if article.excerpt.size > 0 or article.content.size > 0 and excerpt_length != 0  -%}
+            {%- if article.excerpt.size > 0 or article.content.size > 0 and excerpt_length != 0 -%}
               <p class="article-card__excerpt rte-width">
-              {% if excerpt_length > 0 %}
-                {%- if article.excerpt.size > 0 -%}
-                  {{ article.excerpt | strip_html | slice: 0, excerpt_length }}
-                {%- else -%}
-                  {{ article.content | strip_html | slice: 0, excerpt_length }}
-                {%- endif -%}
+                {% if excerpt_length > 0 %}
+                  {%- if article.excerpt.size > 0 -%}
+                    {{ article.excerpt | strip_html | slice: 0, excerpt_length }}
+                  {%- else -%}
+                    {{ article.content | strip_html | slice: 0, excerpt_length }}
+                  {%- endif -%}
                 {% endif %}
               </p>
             {%- endif -%}
