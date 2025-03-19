@@ -1,7 +1,7 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 {{ 'article-custom.css' | asset_url | stylesheet_tag }}
 
-<style>
+{% style %}
   .page-width-article {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -107,7 +107,52 @@
     content: '';
     border-color: transparent #b5bd73;
   }
-</style>
+
+  @media (min-width: 1000px) {
+    .for-sp {
+      display: none;
+    }
+  }
+  #sp-fixed-menu {
+    position: fixed;
+    width: 12rem;
+    transform: translateY(-20%);
+    bottom: 6rem;
+    right: 0;
+    font-size: 0;
+    z-index: 99;
+  }
+  /*メニューを横並びにする*/
+  #sp-fixed-menu ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #fff;
+    justify-content: center;
+    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.5);
+  }
+  #sp-fixed-menu li {
+    justify-content: center;
+    align-items: center;
+    padding: 10px 5px 8px 5px;
+    margin: 0;
+    font-size: 12px;
+    display: inline-flex;
+    flex-direction: column;
+  }
+  /*ボタンを調整*/
+  #sp-fixed-menu li a {
+    color: #0a1e27;
+    text-align: center;
+    display: block;
+    width: 100%;
+    padding: 5px 0 0 0;
+    text-decoration: unset;
+  }
+{% endstyle %}
 
 <div class="Custom-main-article">
   <div class="article_section_left">
@@ -198,73 +243,65 @@
             </header>
 
           {%- when 'content' -%}
-              <div
-                class="article-template__content rte page-width-article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                itemprop="articleBody"
-                {{ block.shopify_attributes }}
-              >
-                {% assign divider = '[DIVIDER]' %}
-                {% assign dividerClose = '[/DIVIDER]' %}
-                {% assign text = article.content | split: divider %}
-                {{ text[0] }}
-                {% for divider in text offset: 1 %}
-                  {% assign x = forloop.index %}
-                  {% assign newtext = text[x] | split: dividerClose %}
-                  {% assign targetHandle = newtext[0] %}
-                  {% assign articleHandle = 'all/' | append: targetHandle %}
-                  {% for article in blogs.all.articles %}
-                    {% if article.handle == articleHandle %}
-                      <div class="article_link_card article-{{ article.id }}">
-                        <a href="{{ article.url }}" class="article_link_card_link" title="{{ article.title }}"></a>
-                        <div class="article_link_card_img_container">
-                          <img
-                            src="{{ article.image.src | img_url: 'large' }}"
-                            loading="lazy"
-                            alt="{{ article.image.alt | escape }}"
-                            width="242"
-                            height="137"
-                            class="article_link_card_img"
-                          >
-                        </div>
-                        <div class="article_link_card_text_container">
-                          <p class="article_link_card_date">{{ article.updated_at | time_tag: format: 'date' }}</p>
-                          <p class="article_link_card_title">{{ article.title }}</p>
-                        </div>
-                      </div>
-                    {% endif %}
-                  {% endfor %}
-                  {% if targetHandle == 'ad' %}
-                    <script
-                      crossorigin="anonymous"
-                      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8070459482460907"
-                      async=""
-                    ></script>
-                    <ins
-                      class="adsbygoogle adsense_article"
-                      style="display: block; text-align: center;"
-                      data-ad-layout="in-article"
-                      data-ad-format="fluid"
-                      data-ad-client="ca-pub-8070459482460907"
-                      data-ad-slot="9981210144"
-                      data-full-width-responsive="false"
-                    >
-                    </ins>
-                    <script>
-                      (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                  {% endif %}
-                  {{ newtext[1] }}
-                {% endfor %}
-              </div> 
-
-          {%- when 'share' -%}
             <div
-              class="article-template__social-sharing page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+              class="article-template__content rte page-width-article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+              itemprop="articleBody"
               {{ block.shopify_attributes }}
             >
-              {% assign share_url = request.origin | append: article.url %}
-              {% render 'share-button', block: block, share_link: share_url %}
+              {% assign divider = '[DIVIDER]' %}
+              {% assign dividerClose = '[/DIVIDER]' %}
+              {% assign text = article.content | split: divider %}
+              {{ text[0] }}
+              {% for divider in text offset: 1 %}
+                {% assign x = forloop.index %}
+                {% assign newtext = text[x] | split: dividerClose %}
+                {% assign targetHandle = newtext[0] %}
+                {% assign articleHandle = 'all/' | append: targetHandle %}
+                {% for article in blogs.all.articles %}
+                  {% if article.handle == articleHandle %}
+                    <div class="article_link_card article-{{ article.id }}">
+                      <a href="{{ article.url }}" class="article_link_card_link" title="{{ article.title }}"></a>
+                      <div class="article_link_card_img_container">
+                        <img
+                          src="{{ article.image.src | img_url: 'large' }}"
+                          loading="lazy"
+                          alt="{{ article.image.alt | escape }}"
+                          width="242"
+                          height="137"
+                          class="article_link_card_img"
+                        >
+                      </div>
+                      <div class="article_link_card_text_container">
+                        <p class="article_link_card_date">{{ article.updated_at | time_tag: format: 'date' }}</p>
+                        <p class="article_link_card_title">{{ article.title }}</p>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+                {% if targetHandle == 'ad' %}
+                  <script
+                    crossorigin="anonymous"
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8070459482460907"
+                    async=""
+                  ></script>
+                  <ins
+                    class="adsbygoogle adsense_article"
+                    style="display: block; text-align: center;"
+                    data-ad-layout="in-article"
+                    data-ad-format="fluid"
+                    data-ad-client="ca-pub-8070459482460907"
+                    data-ad-slot="9981210144"
+                    data-full-width-responsive="false"
+                  >
+                  </ins>
+                  <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
+                {% endif %}
+                {{ newtext[1] }}
+              {% endfor %}
             </div>
+
           {%- when 'content_policy' -%}
             {% render 'Custom-content-policy', content_policy_text: block.settings.content_policy_text %}
           {%- when 'author1' -%}
@@ -297,9 +334,6 @@
             {% endif %}
           {%- when 'prev_next_btn' -%}
             {% render 'Custom-article-prev-next' %}
-
-          {%- when 'grid_ad' -%}
-            {% render 'Custom-article-grid-ad', grid_ad_html: block.settings.grid_ad_html %}
         {%- endcase -%}
       {%- endfor -%}
 
@@ -493,28 +527,10 @@
   <aside class="menu page-width-article">
     {%- for block in section.blocks -%}
       {%- case block.type -%}
-        {%- when 'ad' -%}
-          {% render 'Custom-article-ad', ad_html: block.settings.ad_html %}
         {%- when 'category' -%}
           {% render 'Custom-article-category', menu: block.settings.menu %}
         {%- when 'tags' -%}
           {% render 'Custom-article-tags' %}
-        {%- when 'ranking' -%}
-          <div class="ranking-container">
-            <h3>ランキング</h3>
-            <ul>
-              <li class="ranking-item"><a href="#">メニュー1</a></li>
-              <li class="ranking-item"><a href="#">メニュー2</a></li>
-              <li class="ranking-item"><a href="#">メニュー3</a></li>
-              <li class="ranking-item"><a href="#">メニュー4</a></li>
-              <li class="ranking-item"><a href="#">メニュー5</a></li>
-            </ul>
-          </div>
-        {%- when 'new-articles' -%}
-          {% render 'Custom-article-new-articles',
-            new_articles: block.settings.new_articles,
-            post_limit: block.settings.post_limit
-          %}
         {%- when 'table-of-contents' -%}
           {% render 'Custom-table-of-contents' %}
       {%- endcase -%}
@@ -523,17 +539,6 @@
 </div>
 
 <div id="sp-fixed-menu" class="for-sp">
-  {% comment %}
-    {% if article.metafields.custom.banner != false %}
-    <div class="banner-small" id="banner-small">
-      <span id="close-button" onclick="closeBanner()">×</span>
-      <a href="https://c.affitch.com?ref=GJFNCW624HHJ" target="_blank">
-        <img src="https://cdn.shopify.com/s/files/1/0604/3956/0376/files/new-year-vol-3.webp?v=1706328855">
-      </a>
-      </div>
-    {% endif %}
-  {% endcomment %}
-
   <ul>
     <li>
       <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512">
@@ -543,80 +548,6 @@
     </li>
   </ul>
 </div>
-
-<style>
-  .banner-small {
-    position: relative;
-  }
-  .banner-small img {
-    width: 65%;
-    display: block;
-    margin: 0 0 0 auto;
-  }
-
-  #close-button {
-    position: absolute;
-    top: -20px;
-    right: 0;
-    cursor: pointer;
-    font-size: 24px;
-    background: #f3f3f3;
-    color: #8a8a8a;
-    display: inline-flex;
-    height: 20px;
-    width: 20px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  @media (min-width: 1000px) {
-    .for-sp {
-      display: none;
-    }
-  }
-  #sp-fixed-menu {
-    position: fixed;
-    width: 12rem;
-    transform: translateY(-20%);
-    bottom: 6rem;
-    right: 0;
-    font-size: 0;
-    z-index: 99;
-  }
-
-  /*メニューを横並びにする*/
-  #sp-fixed-menu ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background: #fff;
-    justify-content: center;
-    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.5);
-  }
-
-  #sp-fixed-menu li {
-    justify-content: center;
-    align-items: center;
-    padding: 10px 5px 8px 5px;
-    margin: 0;
-    font-size: 12px;
-    display: inline-flex;
-    flex-direction: column;
-  }
-
-  /*ボタンを調整*/
-  #sp-fixed-menu li a {
-    color: #0a1e27;
-    text-align: center;
-    display: block;
-    width: 100%;
-    padding: 5px 0 0 0;
-    text-decoration: unset;
-  }
-</style>
 
 <script>
   // すべてのimg要素とvideo要素を取得
@@ -774,27 +705,6 @@
       "limit": 1
     },
     {
-      "type": "share",
-      "name": "t:sections.main-article.blocks.share.name",
-      "limit": 2,
-      "settings": [
-        {
-          "type": "text",
-          "id": "share_label",
-          "label": "t:sections.main-article.blocks.share.settings.text.label",
-          "default": "Share"
-        },
-        {
-          "type": "paragraph",
-          "content": "t:sections.main-article.blocks.share.settings.featured_image_info.content"
-        },
-        {
-          "type": "paragraph",
-          "content": "t:sections.main-article.blocks.share.settings.title_info.content"
-        }
-      ]
-    },
-    {
       "type": "content_policy",
       "name": "コンテンツポリシーアナウンス",
       "limit": 1,
@@ -864,30 +774,9 @@
       "limit": 1
     },
     {
-      "type": "grid_ad",
-      "name": "グリッド広告",
-      "settings": [
-        {
-          "type": "html",
-          "id": "grid_ad_html",
-          "label": "HTML"
-        }
-      ]
-    },
-    {
-      "type": "ad",
-      "name": "サイドバー広告",
-      "settings": [
-        {
-          "type": "liquid",
-          "id": "ad_html",
-          "label": "HTML & Liquid"
-        }
-      ]
-    },
-    {
       "type": "table-of-contents",
-      "name": "目次"
+      "name": "目次",
+      "limit": 1
     },
     {
       "type": "category",
@@ -905,32 +794,6 @@
       "type": "tags",
       "name": "サイドバータグ",
       "limit": 1
-    },
-    {
-      "type": "ranking",
-      "name": "サイドバーランキング",
-      "limit": 1
-    },
-    {
-      "type": "new-articles",
-      "name": "サイドバー新着記事",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "blog",
-          "id": "new_articles",
-          "label": "カテゴリーメニュー"
-        },
-        {
-          "id": "post_limit",
-          "type": "range",
-          "label": "表示数を選択",
-          "min": 1,
-          "max": 6,
-          "step": 1,
-          "default": 3
-        }
-      ]
     }
   ]
 }

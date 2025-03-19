@@ -71,6 +71,10 @@
           "type": "tags",
           "settings": {}
         },
+        "search_DnYpiL": {
+          "type": "search",
+          "settings": {}
+        },
         "table_of_contents_8nnVP4": {
           "type": "table-of-contents",
           "settings": {}
@@ -87,6 +91,7 @@
         "bf76223a-71f5-44f3-af95-a25b00d2b400",
         "fa1985ff-9e30-4ebe-b412-8dc9c335c870",
         "ec9a3c4d-2fbe-447e-a3fa-00ceb8facb46",
+        "search_DnYpiL",
         "table_of_contents_8nnVP4"
       ],
       "settings": {

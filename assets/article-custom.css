@@ -188,9 +188,6 @@ h4,
   border: dashed;
   list-style-position: outside;
 }
-.article_ol_list {
-  list-style: none;
-}
 
 /*テーブルスタイル*/
 .table-wrap table {
@@ -588,4 +585,11 @@ h3 .article-rank {
 .center {
   text-align: center;
   margin: 1.5em 0;
+}
+
+/*注意事項*/
+.attention {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #ff6060;
 }
