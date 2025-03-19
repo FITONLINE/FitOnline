@@ -171,7 +171,7 @@
   </div>
 
   <div id="results" class="calculator-results" style="display: none;">
-    <h3>あなたのマクロ栄養素バランス</h3>
+    <p>あなたのマクロ栄養素バランス</p>
 
     <div class="results-summary">
       <div class="result-item">
@@ -194,7 +194,7 @@
     </div>
 
     <div id="goal-results" class="goal-results" style="display: none;">
-      <h4>目標達成計画</h4>
+      <p>目標達成計画</p>
       <div class="goal-results-grid">
         <div class="goal-result-item">
           <div class="goal-result-label">現在の体重</div>
@@ -239,7 +239,7 @@
     </div>
 
     <div class="macros-breakdown">
-      <h4>マクロ栄養素内訳</h4>
+      <p>マクロ栄養素内訳</p>
 
       <div class="macro-chart-container">
         <canvas id="macro-chart"></canvas>
@@ -276,58 +276,1246 @@
 <h2>カロリー計算の仕組み</h2>
 <p>FitOnlineのPFCバランスツールは、栄養士やトレーナーが推奨する「Mifflin-St Jeor式」の計算式に基づいています。</p>
 <blockquote>
-  <p>The Mifflin-St Jeor equation is more likely than the other equations tested to estimate RMR to within 10% of that measured,</p>
-  <cite>引用：Frankenfield D, Roth-Yousey L, Compher C. Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review. J Am Diet Assoc. 2005 May;105(5):775-89. doi: 10.1016/j.jada.2005.02.005. PMID: 15883556.<br> 
-  <a href="https://pubmed.ncbi.nlm.nih.gov/15883556/" title="test" target="_blank" rel="noopener noreferrer">Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review</a>
+  <p>
+    The Mifflin-St Jeor equation is more likely than the other equations tested to estimate RMR to within 10% of that
+    measured,
+  </p>
+  <cite
+    >引用：Frankenfield D, Roth-Yousey L, Compher C. Comparison of predictive equations for resting metabolic rate in
+    healthy nonobese and obese adults: a systematic review. J Am Diet Assoc. 2005 May;105(5):775-89. doi:
+    10.1016/j.jada.2005.02.005. PMID: 15883556.<br>
+    <a href="https://pubmed.ncbi.nlm.nih.gov/15883556/" title="test" target="_blank" rel="noopener noreferrer"
+      >Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic
+      review</a
+    >
   </cite>
-  </blockquote>
+</blockquote>
 <h3>基礎代謝率（BMR）計算式</h3>
 <p>BMR（何もしなくても消費するカロリー）は以下の式で求められます。</p>
 <ul class="list-unstyled">
-  <li>
-<span class="bold">男性：</span> 10 × 体重(kg) + 6.25 × 身長(cm) - 5 × 年齢 + 5 (kcal/日)</li>
-  <li>
-<span class="bold">女性：</span> 10 × 体重(kg) + 6.25 × 身長(cm) - 5 × 年齢 - 161 (kcal/日)</li>
+  <li><span class="bold">男性：</span> 10 × 体重(kg) + 6.25 × 身長(cm) - 5 × 年齢 + 5 (kcal/日)</li>
+  <li><span class="bold">女性：</span> 10 × 体重(kg) + 6.25 × 身長(cm) - 5 × 年齢 - 161 (kcal/日)</li>
 </ul>
 <h3>活動レベル別の係数</h3>
 <ul class="list-unstyled">
-  <li>
-<span class="bold">座りがち：</span> × 1.2</li>
-  <li>
-<span class="bold">軽い運動：</span> × 1.375</li>
-  <li>
-<span class="bold">中程度の運動：</span> × 1.55</li>
-  <li>
-<span class="bold">高い活動レベル：</span> × 1.725</li>
-  <li>
-<span class="bold">非常に高い活動レベル：</span> × 1.9</li>
+  <li><span class="bold">座りがち：</span> × 1.2</li>
+  <li><span class="bold">軽い運動：</span> × 1.375</li>
+  <li><span class="bold">中程度の運動：</span> × 1.55</li>
+  <li><span class="bold">高い活動レベル：</span> × 1.725</li>
+  <li><span class="bold">非常に高い活動レベル：</span> × 1.9</li>
 </ul>
 <h3>目標別のカロリー調整</h3>
 <ul class="list-unstyled">
-  <li>
-<span class="bold">体重減少：</span>1日の総消費カロリーから10～20% 減少</li>
-  <li>
-<span class="bold">体重増加：</span>1日の総消費カロリーに500 kcal 加算</li>
-  <li>
-<span class="bold">体重維持：</span>1日の総消費カロリーを維持</li>
+  <li><span class="bold">体重減少：</span>1日の総消費カロリーから10～20% 減少</li>
+  <li><span class="bold">体重増加：</span>1日の総消費カロリーに500 kcal 加算</li>
+  <li><span class="bold">体重維持：</span>1日の総消費カロリーを維持</li>
 </ul>
 <h3>栄養素の配分（PFC比率）</h3>
 <p>目標に対する推奨されるPFC比率は以下の通りです。</p>
 <ul class="list-unstyled">
-  <li>
-<span class="bold">体重減少：</span>炭水化物40%、タンパク質40%、脂質20%</li>
-  <li>
-<span class="bold">体重増加：</span>炭水化物40%、タンパク質30%、脂質30%</li>
-  <li>
-<span class="bold">体重維持：</span>炭水化物40%、タンパク質40%、脂質20%</li>
+  <li><span class="bold">体重減少：</span>炭水化物40%、タンパク質40%、脂質20%</li>
+  <li><span class="bold">体重増加：</span>炭水化物40%、タンパク質30%、脂質30%</li>
+  <li><span class="bold">体重維持：</span>炭水化物40%、タンパク質40%、脂質20%</li>
 </ul>
 <h3>1gあたりのカロリー</h3>
 <ul class="list-unstyled">
-  <li>
-<span class="bold">タンパク質：</span> 4 kcal</li>
-  <li>
-<span class="bold">炭水化物：</span> 4 kcal</li>
-  <li>
-<span class="bold">脂質：</span> 9 kcal</li>
+  <li><span class="bold">タンパク質：</span> 4 kcal</li>
+  <li><span class="bold">炭水化物：</span> 4 kcal</li>
+  <li><span class="bold">脂質：</span> 9 kcal</li>
 </ul>
 
+<style>
+  .calculator-form {
+    background-color: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  .btn-primary {
+    background-color: #0066cc;
+    color: white;
+  }
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    margin-left: 10px;
+  }
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+  .calculator-results {
+    background-color: #e9f7fe;
+    padding: 25px;
+    border-radius: 10px;
+  }
+  .results-summary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  .result-item {
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+    margin: 10px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .result-label {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 5px;
+  }
+  .result-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0066cc;
+  }
+  .result-unit {
+    font-size: 14px;
+    color: #6c757d;
+  }
+  .macros-breakdown {
+    margin-top: 20px;
+  }
+  .macro-chart-container {
+    margin: 20px 0;
+    height: 250px;
+  }
+  .macro-details {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .macro-item {
+    flex: 1;
+    min-width: 150px;
+    margin: 10px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  .macro-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+  }
+  .protein::before {
+    background-color: #ff6b6b;
+  }
+  .carbs::before {
+    background-color: #4ecdc4;
+  }
+  .fats::before {
+    background-color: #ffe66d;
+  }
+  .macro-label {
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .macro-values {
+    font-size: 14px;
+    color: #495057;
+  }
+  @media (max-width: 768px) {
+    .results-summary,
+    .macro-details {
+      flex-direction: column;
+    }
+    .result-item,
+    .macro-item {
+      margin-bottom: 15px;
+    }
+  }
+  .toggle-checkbox {
+    display: none;
+  }
+  .toggle-label {
+    display: inline-block;
+    position: relative;
+    padding-left: 50px;
+    cursor: pointer;
+    line-height: 24px;
+  }
+  .toggle-label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 24px;
+    border-radius: 12px;
+    background-color: #ccc;
+    transition: background-color 0.3s;
+  }
+  .toggle-label:after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: white;
+    transition: transform 0.3s;
+  }
+  .toggle-checkbox:checked + .toggle-label:before {
+    background-color: #0066cc;
+  }
+  .toggle-checkbox:checked + .toggle-label:after {
+    transform: translateX(16px);
+  }
+  .form-range {
+    width: 100%;
+    height: 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    appearance: none;
+    cursor: pointer;
+  }
+  .form-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #0066cc;
+  }
+  .form-range::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #0066cc;
+    border: none;
+  }
+  .custom-macros {
+    background-color: #f0f7ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+  .ratio-warning {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+  .goal-settings {
+    background-color: #f0f7ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  .goal-setting-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .radio-option {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+  }
+  .radio-option input[type='radio'] {
+    margin-right: 5px;
+  }
+  .time-setting,
+  .rate-setting {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+  }
+  .goal-results {
+    margin-top: 30px;
+    background-color: #e6f7ff;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .goal-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+  }
+  .goal-result-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .goal-result-label {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 5px;
+  }
+  .goal-result-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0066cc;
+  }
+  .goal-result-unit {
+    font-size: 14px;
+    color: #6c757d;
+  }
+  .goal-note {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff8e1;
+    border-radius: 8px;
+    border-left: 4px solid #ffc107;
+  }
+  .goal-recommendation {
+    margin: 0;
+    color: #5d4037;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .radio-buttons-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  .radio-button {
+    position: relative;
+    min-width: 120px;
+  }
+  .radio-button input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .radio-button label {
+    display: block;
+    background-color: #f0f0f0;
+    padding: 12px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-align: center;
+    font-weight: 500;
+  }
+  .radio-button input[type='radio']:checked + label {
+    background-color: #e6f7ff;
+    border-color: #0066cc;
+    color: #0066cc;
+  }
+  .radio-button label:hover {
+    background-color: #e9ecef;
+  }
+  .radio-desc {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    color: #6c757d;
+    margin-top: 4px;
+  }
+  /* 目標設定方法 */
+  .goal-setting-options .radio-button {
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .goal-setting-options .radio-button label {
+    text-align: center;
+    padding: 15px;
+  }
+
+  .goal-setting-options .radio-desc {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* カラー変数 */
+  :root {
+    --primary-color: #0066cc;
+    --primary-hover: #0056b3;
+    --secondary-color: #6c757d;
+    --light-bg: #f8f9fa;
+    --border-color: #ced4da;
+    --hover-bg: #e9ecef;
+    --result-bg: #e9f7fe;
+    --custom-bg: #f0f7ff;
+    --warning-color: #dc3545;
+    --note-bg: #fff8e1;
+    --note-border: #ffc107;
+    --protein-color: #ff6b6b;
+    --carbs-color: #4ecdc4;
+    --fats-color: #ffe66d;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* チェックボックス制御 */
+  input[type='checkbox'] {
+    display: inline-block;
+  }
+
+  input[type='checkbox'].toggle-checkbox {
+    display: none;
+  }
+
+  /* フォームスタイル */
+  .calculator-form,
+  .calculator-results {
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .calculator-form {
+    background-color: var(--light-bg);
+  }
+
+  .calculator-results {
+    background-color: var(--result-bg);
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  /* ラベルとボタン */
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--primary-hover);
+  }
+
+  .btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+    margin-left: 10px;
+  }
+
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+
+  /* 結果表示 */
+  .results-summary,
+  .macro-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .results-summary {
+    margin-bottom: 30px;
+  }
+
+  .result-item,
+  .macro-item,
+  .goal-result-item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+
+  .result-item,
+  .macro-item {
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .macro-item {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .macro-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+  }
+
+  .protein::before {
+    background-color: var(--protein-color);
+  }
+  .carbs::before {
+    background-color: var(--carbs-color);
+  }
+  .fats::before {
+    background-color: var(--fats-color);
+  }
+
+  .result-label,
+  .goal-result-label {
+    font-size: 14px;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+  }
+
+  .result-value,
+  .goal-result-value {
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+
+  .result-value {
+    font-size: 24px;
+  }
+
+  .goal-result-value {
+    font-size: 20px;
+  }
+
+  .result-unit,
+  .goal-result-unit {
+    font-size: 14px;
+    color: var(--secondary-color);
+  }
+
+  /* マクロチャート */
+  .macro-chart-container {
+    margin: 20px 0;
+    height: 250px;
+  }
+
+  .macro-label {
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .macro-values {
+    font-size: 14px;
+    color: #495057;
+  }
+
+  /* トグルスイッチ */
+  .toggle-checkbox {
+    display: none;
+  }
+
+  .toggle-label {
+    display: inline-block;
+    position: relative;
+    padding-left: 50px;
+    cursor: pointer;
+    line-height: 24px;
+  }
+
+  .toggle-label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 24px;
+    border-radius: 12px;
+    background-color: #ccc;
+    transition: background-color 0.3s;
+  }
+
+  .toggle-label:after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: white;
+    transition: transform 0.3s;
+  }
+
+  .toggle-checkbox:checked + .toggle-label:before {
+    background-color: var(--primary-color);
+  }
+
+  .toggle-checkbox:checked + .toggle-label:after {
+    transform: translateX(16px);
+  }
+
+  /* レンジスライダー */
+  .form-range {
+    width: 100%;
+    height: 8px;
+    background-color: var(--hover-bg);
+    border-radius: 4px;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .form-range::-webkit-slider-thumb,
+  .form-range::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+  }
+
+  .form-range::-webkit-slider-thumb {
+    appearance: none;
+  }
+
+  .form-range::-moz-range-thumb {
+    border: none;
+  }
+
+  /* 特殊ボックス */
+  .custom-macros,
+  .goal-settings {
+    background-color: var(--custom-bg);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+
+  .custom-macros {
+    margin-top: 10px;
+  }
+
+  .time-setting,
+  .rate-setting {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+  }
+
+  .ratio-warning {
+    color: var(--warning-color);
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+
+  /* 目標結果 */
+  .goal-results {
+    margin-top: 30px;
+    background-color: var(--custom-bg);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .goal-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .goal-note {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--note-bg);
+    border-radius: 8px;
+    border-left: 4px solid var(--note-border);
+  }
+
+  .goal-recommendation {
+    margin: 0;
+    color: #5d4037;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* ラジオボタングループ */
+  .radio-buttons-group,
+  .goal-setting-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .radio-button {
+    position: relative;
+    min-width: 120px;
+  }
+
+  .radio-button input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .radio-button label {
+    display: block;
+    background-color: #f0f0f0;
+    padding: 12px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .radio-button input[type='radio']:checked + label {
+    background-color: var(--custom-bg);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+  }
+
+  .radio-button label:hover {
+    background-color: var(--hover-bg);
+  }
+
+  .radio-desc {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    color: var(--secondary-color);
+    margin-top: 4px;
+  }
+
+  /* レスポンシブデザイン */
+  @media (max-width: 768px) {
+    .results-summary,
+    .macro-details {
+      flex-direction: column;
+    }
+
+    .result-item,
+    .macro-item {
+      margin-bottom: 15px;
+    }
+
+    .radio-buttons-group {
+      flex-direction: column;
+    }
+
+    .radio-button {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // 定数 - マクロ栄養素のカロリー価値
+    const PROTEIN_CAL_PER_GRAM = 4;
+    const CARBS_CAL_PER_GRAM = 4;
+    const FAT_CAL_PER_GRAM = 9;
+    const FAT_ENERGY_PER_KG = 7700; // 1kgの脂肪は約7700kcalに相当
+
+    // DOM要素の取得
+    const elements = {
+      // ボタン
+      calculateButton: document.getElementById('calculate-button'),
+      resetButton: document.getElementById('reset-button'),
+      resultsDiv: document.getElementById('results'),
+
+      // 基本入力フィールド
+      genderRadios: document.querySelectorAll('input[name="gender"]'),
+      ageInput: document.getElementById('age'),
+      heightInput: document.getElementById('height'),
+      weightInput: document.getElementById('weight'),
+      activityRadios: document.querySelectorAll('input[name="activity"]'),
+      goalRadios: document.querySelectorAll('input[name="goal"]'),
+
+      // BMRと消費カロリー結果
+      bmrResult: document.getElementById('bmr-result'),
+      tdeeResult: document.getElementById('tdee-result'),
+      targetCalories: document.getElementById('target-calories'),
+
+      // マクロ結果表示
+      proteinGrams: document.getElementById('protein-grams'),
+      proteinCalories: document.getElementById('protein-calories'),
+      proteinPercent: document.getElementById('protein-percent'),
+      carbsGrams: document.getElementById('carbs-grams'),
+      carbsCalories: document.getElementById('carbs-calories'),
+      carbsPercent: document.getElementById('carbs-percent'),
+      fatsGrams: document.getElementById('fats-grams'),
+      fatsCalories: document.getElementById('fats-calories'),
+      fatsPercent: document.getElementById('fats-percent'),
+
+      // カスタムマクロ関連
+      customizeToggle: document.getElementById('customize-toggle'),
+      customMacros: document.getElementById('custom-macros'),
+      proteinRatio: document.getElementById('protein-ratio'),
+      carbsRatio: document.getElementById('carbs-ratio'),
+      fatsRatio: document.getElementById('fats-ratio'),
+      proteinRatioValue: document.getElementById('protein-ratio-value'),
+      carbsRatioValue: document.getElementById('carbs-ratio-value'),
+      fatsRatioValue: document.getElementById('fats-ratio-value'),
+      totalRatio: document.getElementById('total-ratio'),
+      ratioWarning: document.getElementById('ratio-warning'),
+
+      // 目標設定関連
+      goalSettings: document.getElementById('goal-settings'),
+      targetWeightInput: document.getElementById('target-weight'),
+      byTimeRadio: document.getElementById('by-time'),
+      byRateRadio: document.getElementById('by-rate'),
+      timeSetting: document.getElementById('time-setting'),
+      rateSetting: document.getElementById('rate-setting'),
+      goalWeeksInput: document.getElementById('goal-weeks'),
+
+      // 目標結果表示
+      goalResults: document.getElementById('goal-results'),
+      currentWeightResult: document.getElementById('current-weight-result'),
+      targetWeightResult: document.getElementById('target-weight-result'),
+      weightChangeResult: document.getElementById('weight-change-result'),
+      weeklyRateResult: document.getElementById('weekly-rate-result'),
+      timeToGoalResult: document.getElementById('time-to-goal-result'),
+      dailyCalorieAdjustmentResult: document.getElementById('daily-calorie-adjustment-result'),
+      goalRecommendation: document.getElementById('goal-recommendation'),
+    };
+
+    // グラフ表示用の変数
+    let macroChart;
+
+    // 初期化関数
+    function init() {
+      setupEventListeners();
+      // 初期状態でゴールの値に基づいて目標設定を表示/非表示
+      updateGoalSettings();
+    }
+
+    // イベントリスナーのセットアップ
+    function setupEventListeners() {
+      // カスタムマクロのトグル
+      elements.customizeToggle.addEventListener('change', toggleCustomMacros);
+
+      // スライダーの値変更イベント
+      elements.proteinRatio.addEventListener('input', updateRatioValues);
+      elements.carbsRatio.addEventListener('input', updateRatioValues);
+      elements.fatsRatio.addEventListener('input', updateRatioValues);
+
+      // 目標ラジオボタンの変更イベント
+      elements.goalRadios.forEach((radio) => {
+        radio.addEventListener('change', updateGoalSettings);
+      });
+
+      // 目標設定方法の切り替え
+      elements.byTimeRadio.addEventListener('change', function () {
+        toggleGoalSettingMethod(true);
+      });
+
+      elements.byRateRadio.addEventListener('change', function () {
+        toggleGoalSettingMethod(false);
+      });
+
+      // 計算ボタンのクリックイベント
+      elements.calculateButton.addEventListener('click', calculateMacros);
+
+      // リセットボタンのイベント
+      elements.resetButton.addEventListener('click', resetForm);
+    }
+
+    // カスタムマクロの表示切替
+    function toggleCustomMacros() {
+      elements.customMacros.style.display = this.checked ? 'block' : 'none';
+    }
+
+    // 目標設定方法の切替
+    function toggleGoalSettingMethod(showTimeSetting) {
+      elements.timeSetting.style.display = showTimeSetting ? 'block' : 'none';
+      elements.rateSetting.style.display = showTimeSetting ? 'none' : 'block';
+    }
+
+    // スライダーの値更新関数
+    function updateRatioValues() {
+      const protein = parseInt(elements.proteinRatio.value);
+      const carbs = parseInt(elements.carbsRatio.value);
+      const fats = parseInt(elements.fatsRatio.value);
+      const total = protein + carbs + fats;
+
+      elements.proteinRatioValue.textContent = protein;
+      elements.carbsRatioValue.textContent = carbs;
+      elements.fatsRatioValue.textContent = fats;
+      elements.totalRatio.textContent = total;
+
+      elements.ratioWarning.style.display = total !== 100 ? 'block' : 'none';
+    }
+
+    // 目標設定の表示/非表示
+    function updateGoalSettings() {
+      const selectedGoal = document.querySelector('input[name="goal"]:checked').value;
+      elements.goalSettings.style.display = selectedGoal === 'maintain' ? 'none' : 'block';
+    }
+
+    // BMR計算関数 (Mifflin-St Jeor方程式)
+    function calculateBMR(gender, weight, height, age) {
+      if (gender === 'male') {
+        return 10 * weight + 6.25 * height - 5 * age + 5;
+      } else {
+        return 10 * weight + 6.25 * height - 5 * age - 161;
+      }
+    }
+
+    // TDEEの計算（BMR × 活動レベル）
+    function calculateTDEE(bmr, activityLevel) {
+      return bmr * activityLevel;
+    }
+
+    // 目標カロリー計算
+    function calculateTargetCalories(tdee, goal) {
+      switch (goal) {
+        case 'lose':
+          return tdee * 0.85; // 15%のカロリー赤字
+        case 'gain':
+          return tdee + 500; // 500kcal過剰
+        default: // 'maintain'
+          return tdee;
+      }
+    }
+
+    // マクロ比率の取得
+    function getMacroRatios(goal, isCustom) {
+      if (isCustom) {
+        // カスタム比率を取得
+        const protein = parseInt(elements.proteinRatio.value) / 100;
+        const carbs = parseInt(elements.carbsRatio.value) / 100;
+        const fats = parseInt(elements.fatsRatio.value) / 100;
+
+        // 比率の合計が1.0（100%）か確認
+        const totalRatio = (protein + carbs + fats).toFixed(2);
+        if (totalRatio != 1) {
+          throw new Error('マクロ比率の合計が100%になるように調整してください');
+        }
+
+        return { protein, carbs, fats };
+      } else {
+        // デフォルト比率
+        switch (goal) {
+          case 'lose':
+            return { protein: 0.4, carbs: 0.4, fats: 0.2 }; // 40/40/20
+          default: // 'gain' または 'maintain'
+            return { protein: 0.3, carbs: 0.4, fats: 0.3 }; // 30/40/30
+        }
+      }
+    }
+
+    // マクロ栄養素の計算
+    function calculateMacroNutrients(targetCalories, ratios) {
+      // カロリー計算
+      const proteinCals = targetCalories * ratios.protein;
+      const carbsCals = targetCalories * ratios.carbs;
+      const fatsCals = targetCalories * ratios.fats;
+
+      // グラム計算
+      const proteinG = Math.round(proteinCals / PROTEIN_CAL_PER_GRAM);
+      const carbsG = Math.round(carbsCals / CARBS_CAL_PER_GRAM);
+      const fatsG = Math.round(fatsCals / FAT_CAL_PER_GRAM);
+
+      return {
+        protein: { grams: proteinG, calories: Math.round(proteinCals), percent: Math.round(ratios.protein * 100) },
+        carbs: { grams: carbsG, calories: Math.round(carbsCals), percent: Math.round(ratios.carbs * 100) },
+        fats: { grams: fatsG, calories: Math.round(fatsCals), percent: Math.round(ratios.fats * 100) },
+      };
+    }
+
+    // 目標体重の計算
+    function calculateWeightGoal(currentWeight, targetWeight, byTime, timeOrRate) {
+      const weightChange = Math.abs(targetWeight - currentWeight);
+      let weeklyRate, timeToGoal, dailyCalorieAdjustment;
+
+      if (byTime) {
+        // 期間から速度を計算
+        const weeks = parseInt(timeOrRate) || 12;
+        timeToGoal = weeks;
+        weeklyRate = weightChange / weeks;
+      } else {
+        // 速度から期間を計算
+        weeklyRate = parseFloat(timeOrRate);
+        timeToGoal = Math.ceil(weightChange / weeklyRate);
+      }
+
+      // 1kgの脂肪は約7700kcalに相当
+      dailyCalorieAdjustment = Math.round((weeklyRate * FAT_ENERGY_PER_KG) / 7);
+
+      return {
+        weightChange: weightChange.toFixed(1),
+        weeklyRate: weeklyRate.toFixed(2),
+        timeToGoal: timeToGoal,
+        dailyCalorieAdjustment: dailyCalorieAdjustment,
+      };
+    }
+
+    // 目標に対する推奨メッセージを生成
+    function generateRecommendation(goal, weeklyRate, timeToGoal) {
+      if (goal === 'lose') {
+        if (weeklyRate > 1) {
+          return '体重減少が非常に速いペースを設定しています。健康的な減量のために0.5-1kg/週程度をお勧めします。';
+        } else if (timeToGoal > 26) {
+          return '長期の目標設定です。短期の目標に分けると達成感が得られやすくなります。';
+        } else {
+          return '健康的な体重減少計画です。十分な栄養摂取と運動を組み合わせることで効果的な減量が可能です。';
+        }
+      } else if (goal === 'gain') {
+        if (weeklyRate > 0.5) {
+          return '体重増加が速いペースです。0.25-0.5kg/週程度が筋肉増加に最適です。それ以上は脂肪として蓄積されやすくなります。';
+        } else {
+          return '適切な体重増加計画です。十分なタンパク質摂取と筋力トレーニングを組み合わせることで効果的に筋肉量を増やせます。';
+        }
+      }
+      return '';
+    }
+
+    // グラフ描画関数
+    function renderChart(protein, carbs, fat) {
+      const ctx = document.getElementById('macro-chart').getContext('2d');
+
+      // 既存のグラフがあれば破棄
+      if (macroChart) {
+        macroChart.destroy();
+      }
+
+      // 新しいグラフを作成
+      macroChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['タンパク質', '炭水化物', '脂質'],
+          datasets: [
+            {
+              data: [protein, carbs, fat],
+              backgroundColor: ['#ff6b6b', '#4ecdc4', '#ffe66d'],
+              borderWidth: 0,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '70%',
+          plugins: {
+            legend: {
+              position: 'bottom',
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  const label = context.label || '';
+                  const value = context.parsed || 0;
+                  return label + ': ' + Math.round(value * 100) + '%';
+                },
+              },
+            },
+          },
+        },
+      });
+    }
+
+    // 結果表示を更新
+    function updateResults(bmr, tdee, targetCals, macros, goalData) {
+      // 基本情報の更新
+      elements.bmrResult.textContent = Math.round(bmr);
+      elements.tdeeResult.textContent = Math.round(tdee);
+      elements.targetCalories.textContent = Math.round(targetCals);
+
+      // マクロ栄養素の更新
+      elements.proteinGrams.textContent = macros.protein.grams;
+      elements.proteinCalories.textContent = macros.protein.calories;
+      elements.proteinPercent.textContent = macros.protein.percent;
+
+      elements.carbsGrams.textContent = macros.carbs.grams;
+      elements.carbsCalories.textContent = macros.carbs.calories;
+      elements.carbsPercent.textContent = macros.carbs.percent;
+
+      elements.fatsGrams.textContent = macros.fats.grams;
+      elements.fatsCalories.textContent = macros.fats.calories;
+      elements.fatsPercent.textContent = macros.fats.percent;
+
+      // 目標体重情報の更新（あれば）
+      if (goalData) {
+        elements.currentWeightResult.textContent = goalData.currentWeight;
+        elements.targetWeightResult.textContent = goalData.targetWeight;
+        elements.weightChangeResult.textContent = goalData.weightChange;
+        elements.weeklyRateResult.textContent = goalData.weeklyRate;
+        elements.timeToGoalResult.textContent = goalData.timeToGoal;
+        elements.dailyCalorieAdjustmentResult.textContent = goalData.dailyCalorieAdjustment;
+        elements.goalRecommendation.textContent = goalData.recommendation;
+
+        elements.goalResults.style.display = 'block';
+      } else {
+        elements.goalResults.style.display = 'none';
+      }
+
+      // 結果セクションを表示
+      elements.resultsDiv.style.display = 'block';
+
+      // グラフを描画
+      renderChart(macros.protein.percent / 100, macros.carbs.percent / 100, macros.fats.percent / 100);
+    }
+
+    // マクロ計算のメイン関数
+    function calculateMacros() {
+      try {
+        // 入力値を取得
+        const gender = document.querySelector('input[name="gender"]:checked').value;
+        const age = parseInt(elements.ageInput.value);
+        const height = parseInt(elements.heightInput.value);
+        const weight = parseInt(elements.weightInput.value);
+        const activity = parseFloat(document.querySelector('input[name="activity"]:checked').value);
+        const goal = document.querySelector('input[name="goal"]:checked').value;
+
+        // 入力バリデーション
+        if (isNaN(age) || isNaN(height) || isNaN(weight)) {
+          alert('すべての項目を入力してください');
+          return;
+        }
+
+        // BMRとTDEEを計算
+        const bmr = calculateBMR(gender, weight, height, age);
+        const tdee = calculateTDEE(bmr, activity);
+
+        // 目標カロリー計算
+        const targetCals = calculateTargetCalories(tdee, goal);
+
+        // マクロ比率の計算
+        const macroRatios = getMacroRatios(goal, elements.customizeToggle.checked);
+
+        // マクロ栄養素計算
+        const macros = calculateMacroNutrients(targetCals, macroRatios);
+
+        // 目標体重の計算と表示（必要な場合）
+        let goalData = null;
+        if (goal !== 'maintain') {
+          const targetWeight = parseFloat(elements.targetWeightInput.value);
+
+          if (!isNaN(targetWeight)) {
+            // 目標設定方法に基づいて計算
+            const byTime = elements.byTimeRadio.checked;
+            const timeOrRate = byTime
+              ? elements.goalWeeksInput.value
+              : document.querySelector('input[name="weight-rate"]:checked').value;
+
+            const weightGoal = calculateWeightGoal(weight, targetWeight, byTime, timeOrRate);
+
+            // 推奨メッセージを生成
+            const recommendation = generateRecommendation(
+              goal,
+              parseFloat(weightGoal.weeklyRate),
+              weightGoal.timeToGoal
+            );
+
+            goalData = {
+              currentWeight: weight,
+              targetWeight: targetWeight,
+              weightChange: weightGoal.weightChange,
+              weeklyRate: weightGoal.weeklyRate,
+              timeToGoal: weightGoal.timeToGoal,
+              dailyCalorieAdjustment: weightGoal.dailyCalorieAdjustment,
+              recommendation: recommendation,
+            };
+          }
+        }
+
+        // 結果を表示
+        updateResults(bmr, tdee, targetCals, macros, goalData);
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+
+    // フォームリセット関数
+    function resetForm() {
+      // 基本情報をリセット
+      document.getElementById('gender-male').checked = true;
+      elements.ageInput.value = '';
+      elements.heightInput.value = '';
+      elements.weightInput.value = '';
+      document.getElementById('activity-1').checked = true;
+      document.getElementById('goal-lose').checked = true;
+      updateGoalSettings();
+
+      // 目標設定をリセット
+      elements.targetWeightInput.value = '';
+      elements.byTimeRadio.checked = true;
+      elements.byRateRadio.checked = false;
+      elements.timeSetting.style.display = 'block';
+      elements.rateSetting.style.display = 'none';
+      elements.goalWeeksInput.value = '12';
+      document.getElementById('rate-025').checked = true;
+      elements.goalSettings.style.display = 'none';
+
+      // カスタムマクロ比率をリセット
+      elements.customizeToggle.checked = false;
+      elements.customMacros.style.display = 'none';
+      elements.proteinRatio.value = 30;
+      elements.carbsRatio.value = 40;
+      elements.fatsRatio.value = 30;
+      updateRatioValues();
+
+      // 結果を非表示
+      elements.resultsDiv.style.display = 'none';
+
+      // グラフがあれば破棄
+      if (macroChart) {
+        macroChart.destroy();
+        macroChart = null;
+      }
+    }
+
+    // 初期化
+    init();
+  });
+</script>
+
+<!-- Chart.jsを読み込み -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>

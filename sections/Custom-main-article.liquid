@@ -1,175 +1,8 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 {{ 'article-custom.css' | asset_url | stylesheet_tag }}
 
-{% style %}
-  .page-width-article {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-  .article-template header {
-    margin-top: 2rem;
-  }
-  .circle-divider:after {
-    content: none;
-  }
-  article {
-    padding: 3rem 0;
-  }
-  .Custom-main-article .article-tags {
-    font-size: 1rem;
-  }
-  .Custom-main-article .article-template__link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #0a1e27;
-    color: #fff;
-    width: 145px;
-    height: 45px;
-  }
-  aside.menu {
-    padding-bottom: 5rem;
-  }
-  aside.menu ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  aside.menu ul li a {
-    position: relative;
-    text-decoration: none;
-  }
-  aside.menu ul li a:after {
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    content: '';
-    width: 100%;
-    height: 2px;
-    background: #333;
-    transform: scale(0, 1);
-    transform-origin: left top;
-    transition: transform 0.3s;
-  }
-  @media screen and (min-width: 1000px) {
-    .Custom-main-article {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-      display: flex;
-      column-gap: 3rem;
-      max-width: 126rem;
-      margin: 0 auto;
-    }
-    article {
-      margin-bottom: 2rem;
-    }
-    .article_section_left {
-      flex: 1;
-      overflow: hidden;
-    }
-    aside.menu {
-      flex: 0 0 40rem;
-    }
-  }
-
-  .article_top_banner {
-    width: 98%;
-    margin: 0 auto;
-    margin-top: 2rem;
-    position: relative;
-    position: relative;
-  }
-  .article_top_banner img {
-    width: 100%;
-    height: auto;
-  }
-  .article_top_banner_label {
-    position: absolute;
-    top: -3px;
-    right: 3px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 35px;
-    height: 25px;
-    font-size: 1.2rem;
-    line-height: 1;
-    color: #fff;
-    background-color: #b5bd73;
-  }
-  .article_top_banner_label:after {
-    position: absolute;
-    top: 25px;
-    left: 0;
-    width: 0px;
-    height: 0px;
-    border-width: 0 17.5px 5px;
-    border-style: solid;
-    content: '';
-    border-color: transparent #b5bd73;
-  }
-
-  @media (min-width: 1000px) {
-    .for-sp {
-      display: none;
-    }
-  }
-  #sp-fixed-menu {
-    position: fixed;
-    width: 12rem;
-    transform: translateY(-20%);
-    bottom: 6rem;
-    right: 0;
-    font-size: 0;
-    z-index: 99;
-  }
-  /*メニューを横並びにする*/
-  #sp-fixed-menu ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background: #fff;
-    justify-content: center;
-    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.5);
-  }
-  #sp-fixed-menu li {
-    justify-content: center;
-    align-items: center;
-    padding: 10px 5px 8px 5px;
-    margin: 0;
-    font-size: 12px;
-    display: inline-flex;
-    flex-direction: column;
-  }
-  /*ボタンを調整*/
-  #sp-fixed-menu li a {
-    color: #0a1e27;
-    text-align: center;
-    display: block;
-    width: 100%;
-    padding: 5px 0 0 0;
-    text-decoration: unset;
-  }
-{% endstyle %}
-
 <div class="Custom-main-article">
   <div class="article_section_left">
-    {% if section.settings.article_top_banner_img != blank and article.metafields.custom.banner == true %}
-      <div class="article_top_banner">
-        <a href="{{ section.settings. article_top_banner_url }}" target="_blank">
-          <img
-            src="{{ section.settings. article_top_banner_img | img_url: '1200x' }}"
-            width="{{ section.settings. article_top_banner_img.width }}"
-            height="{{ section.settings. article_top_banner_img.height }}"
-          >
-        </a>
-        {% if section.settings.banner_label != false -%}
-          <span class="article_top_banner_label">NEW</span>
-        {%- endif %}
-      </div>
-    {% endif %}
     {% render 'Custom-breadcrumb' %}
     <article class="article-template">
       {%- for block in section.blocks -%}
@@ -538,16 +371,7 @@
   </aside>
 </div>
 
-<div id="sp-fixed-menu" class="for-sp">
-  <ul>
-    <li>
-      <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512">
-        <style>svg{fill:#0a1e27}</style><path d="M24 56c0-13.3 10.7-24 24-24H80c13.3 0 24 10.7 24 24V176h16c13.3 0 24 10.7 24 24s-10.7 24-24 24H40c-13.3 0-24-10.7-24-24s10.7-24 24-24H56V80H48C34.7 80 24 69.3 24 56zM86.7 341.2c-6.5-7.4-18.3-6.9-24 1.2L51.5 357.9c-7.7 10.8-22.7 13.3-33.5 5.6s-13.3-22.7-5.6-33.5l11.1-15.6c23.7-33.2 72.3-35.6 99.2-4.9c21.3 24.4 20.8 60.9-1.1 84.7L86.8 432H120c13.3 0 24 10.7 24 24s-10.7 24-24 24H32c-9.5 0-18.2-5.6-22-14.4s-2.1-18.9 4.3-25.9l72-78c5.3-5.8 5.4-14.6 .3-20.5zM224 64H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H224c-17.7 0-32-14.3-32-32s14.3-32 32-32zm0 160H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H224c-17.7 0-32-14.3-32-32s14.3-32 32-32zm0 160H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H224c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>
-      </svg>
-      <a id="table-of-contents-btn">記事の目次</a>
-    </li>
-  </ul>
-</div>
+{% render 'Custom-article-sp-menu' %}
 
 <script>
   // すべてのimg要素とvideo要素を取得
@@ -584,12 +408,6 @@
   },
   "headline": {{ article.title | json }},
   "description": {{ page_description | json }},
-  {% if article.metafields.custom.rating %}
-  "reviewRating": {
-  "@type": "Rating",
-  "ratingValue": "4"
-  },
-    {% endif %}
     {% if article.image %}
       "image": [
       {{ article | image_url: width: 1920 | prepend: "https:" | json }}
@@ -620,26 +438,6 @@
       "id": "pr_text",
       "label": "PRテキスト"
     },
-    {
-      "type": "header",
-      "content": "バナー設定"
-    },
-    {
-      "type": "url",
-      "id": "article_top_banner_url",
-      "label": "バナーURL"
-    },
-    {
-      "type": "image_picker",
-      "id": "article_top_banner_img",
-      "label": "バナー画像"
-    },
-    {
-      "type": "checkbox",
-      "id": "banner_label",
-      "default": true,
-      "label": "バナーラベル表示"
-    }
   ],
   "blocks": [
     {
