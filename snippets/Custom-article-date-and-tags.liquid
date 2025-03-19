@@ -47,7 +47,7 @@
       <span class="article-tags">ニュース</span>
     {% else %}
       {% for tag in article.tags %}
-        {% if tag == 'personal' or tag == 'fitness' or tag == 'nutrition' or tag == 'training' %}
+        {% if tag == 'personal' or tag == 'fitness' or tag == 'nutrition' or tag == 'training' or tag == 'tools-and-calculators' %}
           <span class="article-tags">
             {{
               tag
@@ -55,6 +55,7 @@
               | replace: 'fitness', 'フィットネス'
               | replace: 'nutrition', 'ニュートリション'
               | replace: 'training', 'トレーニング'
+              | replace: 'tools-and-calculators', 'ツールと計算'
             }}
           </span>
         {% endif %}

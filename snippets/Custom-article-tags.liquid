@@ -27,32 +27,34 @@
     .tag-container ul li {
       padding: .2rem 4px;
   }
-  
 {% endstyle %}
 
 <div class="tag-container">
   <h3>タグ一覧</h3>
   <ul>
-  {% for tag in blog.all_tags %}
-    {% unless tag contains "年" %}
-      <li class="tag-item"><a href="/blogs/all/tagged/{{ tag | handleize }}">
-      {{ tag 
-      | replace: "personal", "パーソナル"  
-      | replace: "fitness", "フィットネス"  
-      | replace: "nutrition", "ニュートリション" 
-      | replace: "training", "トレーニング"
-      | replace: "goldgym", "ゴールドジム"
-      | replace: "-federations", "団体"
-      | replace: "physique", "フィジーク"
-      | replace: "-accessories", "グッズ"
-      | replace: "-apparel", "アパレル"
-      | replace: "-influencer", "インフルエンサー"
-      | replace: "protein", "プロテイン"
-       | replace: "gym", "ジム"
-      }}
-      </a>
-      </li>
+    {% for tag in blog.all_tags %}
+      {% unless tag contains '年' %}
+        <li class="tag-item">
+          <a href="/blogs/all/tagged/{{ tag | handleize }}">
+            {{
+              tag
+              | replace: 'personal', 'パーソナル'
+              | replace: 'fitness', 'フィットネス'
+              | replace: 'nutrition', 'ニュートリション'
+              | replace: 'training', 'トレーニング'
+              | replace: 'goldgym', 'ゴールドジム'
+              | replace: '-federations', '団体'
+              | replace: 'physique', 'フィジーク'
+              | replace: '-accessories', 'グッズ'
+              | replace: '-apparel', 'アパレル'
+              | replace: '-influencer', 'インフルエンサー'
+              | replace: 'protein', 'プロテイン'
+              | replace: 'gym', 'ジム'
+              | replace: 'tools-and-calculators', 'ツールと計算'
+            }}
+          </a>
+        </li>
       {% endunless %}
     {% endfor %}
-    </ul>
+  </ul>
 </div>
