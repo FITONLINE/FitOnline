@@ -83,10 +83,37 @@
 
 {%- paginate blog.articles by section.settings.article_number -%}
   <div class="Custom-main-blog main-blog page-width-widefull section-{{ section.id }}-padding">
-    <h1 class="h2 h2-center{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {{ blog.title | escape }}
-    </h1>
-    <p class="title-en">Articles</p>
+    {% if current_tags %}
+      <h1 class="h2 h2-center{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+        {{
+          current_tags.first
+          | replace: 'personal', 'パーソナル'
+          | replace: 'fitness', 'フィットネス'
+          | replace: 'nutrition', 'ニュートリション'
+          | replace: 'training', 'トレーニング'
+          | replace: 'goldgym', 'ゴールドジム'
+          | replace: '-federations', '団体'
+          | replace: 'physique', 'フィジーク'
+          | replace: '-accessories', 'グッズ'
+          | replace: '-apparel', 'アパレル'
+          | replace: '-influencer', 'インフルエンサー'
+          | replace: 'protein', 'プロテイン'
+          | replace: 'gym', 'ジム'
+          | replace: 'tools-and-calculators', 'ツールと計算'
+        }}
+        <p class="title-en">
+          {{current_tags.first 
+            | replace: '-', ' '
+            | capitalize
+          }}
+        </p>
+      </h1>
+    {% else %}
+      <h1 class="h2 h2-center{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+        {{ blog.title | escape }}
+        <p class="title-en">ARTICLES</p>
+      </h1>
+    {% endif %}
     <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
       {%- for article in blog.articles -%}
         <div
@@ -99,12 +126,12 @@
           {%- render 'Custom-article-card',
             article: article,
             media_aspect_ratio: 1.66,
-             show_image: section.settings.show_image,
+            show_image: section.settings.show_image,
             show_image: section.settings.show_image,
             show_date: section.settings.show_date,
             show_author: section.settings.show_author,
             show_excerpt: true,
-             excerpt_length: section.settings.excerpt_length    
+            excerpt_length: section.settings.excerpt_length
           -%}
         </div>
       {%- endfor -%}
