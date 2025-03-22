@@ -11,16 +11,6 @@
       }
     },
     {
-      "key": "banner",
-      "namespace": "custom",
-      "name": "バナー",
-      "description": "",
-      "type": {
-        "name": "boolean",
-        "category": "TRUE_FALSE"
-      }
-    },
-    {
       "key": "hidden",
       "namespace": "seon",
       "name": "noindex",
