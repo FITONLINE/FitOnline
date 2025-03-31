@@ -664,7 +664,7 @@ div .easyLink-box {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #c7bb7e;
+  background: #484848;
   color: #fff;
   font-weight: bold;
   border-radius: 4px;
@@ -676,9 +676,6 @@ div .easyLink-box {
 }
 .article-rank-3 {
   background: #b6a082;
-}
-.article-rank-4 {
-  background: #484848;
 }
 
 h2 .article-rank,
