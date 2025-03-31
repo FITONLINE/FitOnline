@@ -671,6 +671,9 @@ div .easyLink-box {
   margin: 0;
   padding: 0.4rem 0.8rem;
 }
+.article-rank-1 {
+  background: #c7bb7e;
+}
 .article-rank-2 {
   background: #b1afac;
 }
