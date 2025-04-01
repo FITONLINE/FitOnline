@@ -14,19 +14,27 @@
       "blocks": {
         "ac8006b8-92e1-4e21-ae1f-6e8e3d681506": {
           "type": "article",
-          "settings": { "article_chosen": "all/veatm" }
+          "settings": {
+            "article_chosen": "all/veatm"
+          }
         },
         "eea99e05-9aac-4028-b1be-1f7964e17e2e": {
           "type": "article",
-          "settings": { "article_chosen": "all/lyft-protein" }
+          "settings": {
+            "article_chosen": "all/lyft-protein"
+          }
         },
         "360d9c8b-48c7-4edd-aa6a-ee337f7a0433": {
           "type": "article",
-          "settings": { "article_chosen": "all/trainer-client-love" }
+          "settings": {
+            "article_chosen": "all/trainer-client-love"
+          }
         },
         "9a710290-cc9f-4dd6-8b51-153e09a3a3fc": {
           "type": "article",
-          "settings": { "article_chosen": "all/physique" }
+          "settings": {
+            "article_chosen": "all/physique"
+          }
         },
         "54f6025a-8c46-4d2c-8d98-c90b19c477b9": {
           "type": "article",
@@ -48,19 +56,27 @@
         },
         "69da0fd4-889f-4ee4-9065-46db21ace552": {
           "type": "article",
-          "settings": { "article_chosen": "all/jbbf-and-fwj" }
+          "settings": {
+            "article_chosen": "all/jbbf-and-fwj"
+          }
         },
         "32e368be-50b3-44d2-a3db-b18cc07ddd7f": {
           "type": "article",
-          "settings": { "article_chosen": "all/versagripps" }
+          "settings": {
+            "article_chosen": "all/versagripps"
+          }
         },
         "c67136b2-6e33-4fb5-8e37-0fceaf00dc89": {
           "type": "article",
-          "settings": { "article_chosen": "all/steroid-use" }
+          "settings": {
+            "article_chosen": "all/steroid-use"
+          }
         },
         "9bbc8c6c-8f31-488a-bcff-18ee419b2551": {
           "type": "article",
-          "settings": { "article_chosen": "" }
+          "settings": {
+            "article_chosen": ""
+          }
         }
       },
       "block_order": [
@@ -90,7 +106,7 @@
         "post_limit": 8,
         "columns_desktop": 4,
         "show_image": true,
-        "show_date": true,
+        "show_date": false,
         "show_author": false,
         "excerpt_length": 0,
         "show_view_all": true,
